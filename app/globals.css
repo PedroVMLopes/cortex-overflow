@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #18ca00;
 }
 
 @theme inline {
@@ -12,15 +12,76 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Fonts */
+.silkscreen-regular {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.silkscreen-bold {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.geo-regular {
+  font-family: "Geo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.geo-regular-italic {
+  font-family: "Geo", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.turret-road-extralight {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.turret-road-light {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.turret-road-regular {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.turret-road-medium {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.turret-road-bold {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.turret-road-extrabold {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 800;
+  font-style: normal;
 }
