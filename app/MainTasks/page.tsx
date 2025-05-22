@@ -5,6 +5,9 @@ import { TaskCard } from "../Components/taskCard";
 
 export default function MainTasks() {
 
+    const [ tasks, setTasks ] = useState<Task[]>([])
+    const [ taskName, setTaskName ] = useState("");
+
     interface Task {
         id?: number;
         created_at?: Date;
@@ -16,7 +19,6 @@ export default function MainTasks() {
         user_id: 1;
     }
 
-    let tasks: Task[] = [];
 
     function createTask(inputName: string): void {
         const newTask: Task = {
@@ -27,14 +29,12 @@ export default function MainTasks() {
             is_completed: false,
             user_id: 1
         }
-        tasks.push(newTask);
+        
+        setTasks(prevTasks => [...prevTasks, newTask]);
         setTaskName("");
         console.log("Task Criada: ", newTask.name);
     }
 
-    const [taskName, setTaskName] = useState("");
-
-    
 
     return (
         <>
@@ -48,7 +48,7 @@ export default function MainTasks() {
                     onChange={(e) => setTaskName(e.target.value)}
                 />
                 <button 
-                    className="bg-emerald-950 p-1 px-2 text-xs"
+                    className="bg-emerald-950 p-1 px-2"
                     onClick={() => createTask(taskName)}
                 > 
                     + ADD
@@ -58,8 +58,8 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map(task => (
-                    <div className="bg-amber-300">
-                    {task.name}
+                    <div key={task.name} className="">
+                        <TaskCard />
                     </div>
                 ))}
             </div>
