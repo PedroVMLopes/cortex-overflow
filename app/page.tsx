@@ -16,6 +16,11 @@ export default function Home() {
           />
           <button className="bg-emerald-950 p-1 px-2"> + ADD</button>
         </div>
+
+        {/* TaskCard list render */}
+        <div className="mt-2">
+          <TaskCard />
+        </div>
     </div>
   );
 }
