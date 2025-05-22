@@ -1,6 +1,6 @@
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 
-const attributes: string[] = ["STR", "DEX", "CHA", "WIZ", "INT", "CON"];
+const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
 export const TaskCard = () => {
     return (
@@ -33,9 +33,9 @@ export const TaskCard = () => {
                             <span className="text-xs">Ag</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <button className="w-6 h-6 border border-emerald-400 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
                             <span className="w-8 text-center text-xs text-emerald-400">0</span>
-                            <button className="w-6 h-6 border border-emerald-400 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
                         </div>
                     </div>
                     {/* Gold Coin */}
@@ -45,9 +45,9 @@ export const TaskCard = () => {
                             <span className="text-xs">Au</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <button className="w-6 h-6 border border-emerald-400 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
                             <span className="w-8 text-center text-xs text-emerald-400">0</span>
-                            <button className="w-6 h-6 border border-emerald-400 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
                         </div>
                     </div>
                 </div>
