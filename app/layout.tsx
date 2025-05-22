@@ -31,7 +31,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&family=Silkscreen:wght@400;700&family=Turret+Road:wght@200;300;400;500;700;800&family=VT323&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full pb-[140px] vt323-regular text-xl`}
+        className={`${geistMono.variable} ${geistSans.variable} antialiased h-full pb-[140px]`}
       >
         <Navbar />
         {children}
