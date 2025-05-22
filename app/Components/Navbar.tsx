@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Navbar():any {
 
     return (
-        <div className="fixed bottom-0 pb-1 px-1 w-full font-mono">
+        <div className="fixed bottom-0 pb-1 px-1 w-full font-mono text-emerald-500">
             <div className="grid grid-cols-3 items-center text-center m-2 py-1.5 border border-emerald-800 bg-emerald-950">
                 <div className="flex flex-col justify-center items-center">
                     <div className="flex flex-row gap-1.5 items-center">
@@ -33,7 +33,7 @@ export default function Navbar():any {
             </div>
             <div className="grid grid-cols-4 grid-rows-1 my-2 items-center text-center text-3xl">
                 <div className="flex justify-center">
-                    <Link href="/"><GiCyberEye className="bg-emerald-950 border border-emerald-900 p-0.5 shadow shadow-cyan-500" /></Link>
+                    <Link href="/"><GiCyberEye className="bg-emerald-950 border border-emerald-900 p-0.5 shadow shadow-emerald-400" /></Link>
                 </div>
                 <div className="flex justify-center">
                     <Link href="/LegacyObjectives"><GiCrownedSkull className="bg-emerald-950 border border-emerald-900 p-0.5" /></Link>

@@ -2,12 +2,10 @@
 
 :root {
   --background: #000000;
-  --foreground: #00e4a0;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
