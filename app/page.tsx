@@ -1,5 +1,27 @@
 import { TaskCard } from "./Components/taskCard";
 
+interface Task {
+    id?: number;
+    created_at?: Date;
+    name: string;
+    attribute?: string;
+    silver_amount?: number;
+    gold_amount?: number;
+    is_completed: boolean;
+    user_id: 1;
+}
+
+let tasks: Task[] = [];
+
+function createTask(inputName: string): void {
+  const newTask: Task = {
+    name: inputName,
+    is_completed: false,
+    user_id: 1
+  }
+  tasks.push(newTask);
+}
+
 export default function Home() {
   return (
     <div className="font-mono text-emerald-500 m-2">
@@ -19,7 +41,11 @@ export default function Home() {
 
         {/* TaskCard list render */}
         <div className="mt-4">
-          <TaskCard />
+          {tasks.map(task => (
+            <div className="bg-amber-300">
+              {task.name}
+            </div>
+          ))}
         </div>
     </div>
   );
