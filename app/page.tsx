@@ -18,7 +18,7 @@ export default function Home() {
         </div>
 
         {/* TaskCard list render */}
-        <div className="mt-2">
+        <div className="mt-4">
           <TaskCard />
         </div>
     </div>
