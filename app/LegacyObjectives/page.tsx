@@ -1,7 +1,7 @@
 export default function LegacyObjectives() {
     return(
         <div>
-            <p>Daily Objectives</p>
+            <p>Objetivos Legado</p>
         </div>
     )
 }

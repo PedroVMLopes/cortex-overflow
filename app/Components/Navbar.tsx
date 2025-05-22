@@ -40,7 +40,7 @@ export default function Navbar():any {
                     <Link href="/LegacyObjectives"><GiCrownedSkull className="bg-emerald-800 text-black shadow shadow-emerald-400" /></Link>
                 </div>
                 <div className="flex justify-center">
-                    <button><GiOpenTreasureChest className="bg-emerald-800 text-black shadow shadow-emerald-400" /></button>
+                    <Link href="/Store"><GiOpenTreasureChest className="bg-emerald-800 text-black shadow shadow-emerald-400" /></Link>
                 </div>
                 <div className="flex justify-center">
                     <button><GiCyborgFace className="bg-emerald-800 text-black shadow shadow-emerald-400" /></button>
