@@ -34,7 +34,6 @@ export default function MainTasks() {
         
         setTasks(prevTasks => [...prevTasks, newTask]);
         setTaskName("");
-        console.log("Task Criada: ", newTask.name);
     }
 
     const toggleTaskCompletion = (id: number) => {
@@ -45,16 +44,16 @@ export default function MainTasks() {
     return (
         <>
             {/* Input to add a new task */}
-            <div className="flex justify-between border border-emerald-900">
+            <div className="flex justify-between border border-emerald-800">
                 <input 
                     type="text" 
                     placeholder="Crie uma nova missão..."
-                    className="bg-black pl-1"
+                    className="bg-black pl-1 w-full"
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
                 />
                 <button 
-                    className="bg-emerald-950 p-1 px-2"
+                    className="bg-emerald-950 p-1 px-2 w-fit text-nowrap animate-pulse"
                     onClick={() => createTask(taskName)}
                 > 
                     + ADD
