@@ -8,8 +8,8 @@ export interface Task {
     created_at?: Date;
     name: string;
     attribute?: string;
-    silver_reward?: number;
-    gold_reward?: number;
+    silver_reward: number;
+    gold_reward: number;
     is_completed: boolean;
     user_id: 1;
 }
@@ -40,6 +40,26 @@ export default function MainTasks() {
         setTasks(tasks.map(task => task.id === id ? { ...task, is_completed: !task.is_completed } : task ));
     }
 
+    const updateTaskReward = (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => {
+        setTasks(prevTasks => 
+            prevTasks.map(task => {
+                if (task.id !== id) return task;
+
+                return {
+                    ...task,
+                    silver_reward:
+                        type === 'silver'
+                            ? Math.max(0, (task.silver_reward ?? 0) + (operation === 'increase' ? 1 : -1 ))
+                            : task.silver_reward,
+                    gold_reward:
+                        type === 'gold'
+                            ? Math.max(0, (task.gold_reward ?? 0) + (operation === 'increase' ? 1 : -1 ))
+                            : task.gold_reward,
+                };
+            })
+        )
+    }
+
 
     return (
         <>
@@ -63,7 +83,7 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map(task => (
-                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion}/>
+                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward}/>
                 ))}
             </div>
         </>

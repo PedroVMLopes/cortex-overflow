@@ -7,13 +7,10 @@ const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 interface TaskCard {
     task: Task;
     onToggleCompletion: (id: number) => void;
+    onRewardUpdate: (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => void;
 }
 
-export const TaskCard = ({ task, onToggleCompletion }: TaskCard ) => {
-
-    const [ silverReward, setSilverReward ] = useState(0);
-    const [ goldReward, setGoldReward ] = useState(0);
-    const [ selectedAttribute, setSelectedAttribute ] = useState("");
+export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate }: TaskCard ) => {
 
     return (
         <div className={`font-mono border mt-3 ${task.is_completed && "opacity-40"}`}>
@@ -50,9 +47,13 @@ export const TaskCard = ({ task, onToggleCompletion }: TaskCard ) => {
                             <span className="text-xs">Ag</span>
                         </div>
                         <div className="flex items-center gap-1 text-gray-300">
-                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
-                            <span className="w-8 text-center text-xs">{silverReward}</span>
-                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 'silver', 'decrease')}
+                            >-</button>
+                            <span className="w-8 text-center text-xs">{task.silver_reward}</span>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 'silver', 'increase')}
+                            >+</button>
                         </div>
                     </div>
                     {/* Gold Coin */}
@@ -62,9 +63,13 @@ export const TaskCard = ({ task, onToggleCompletion }: TaskCard ) => {
                             <span className="text-xs">Au</span>
                         </div>
                         <div className="flex items-center gap-1 text-gray-300">
-                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
-                            <span className="w-8 text-center text-xs">{goldReward}</span>
-                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 'gold', 'decrease')}
+                            >-</button>
+                            <span className="w-8 text-center text-xs">{task.gold_reward}</span>
+                            <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 'gold', 'increase')}
+                            >+</button>
                         </div>
                     </div>
                 </div>
