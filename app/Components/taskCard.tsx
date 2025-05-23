@@ -9,17 +9,22 @@ interface TaskCard {
     onToggleCompletion: (id: number) => void;
 }
 
-export const TaskCard = ({ task }: TaskCard ) => {
+export const TaskCard = ({ task, onToggleCompletion }: TaskCard ) => {
 
     const [ silverReward, setSilverReward ] = useState(0);
     const [ goldReward, setGoldReward ] = useState(0);
     const [ selectedAttribute, setSelectedAttribute ] = useState("");
 
     return (
-        <div className="font-mono border">
+        <div className={`font-mono border mt-2 ${task.is_completed && "opacity-40"}`}>
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-2">
-                    <button className="border w-6 h-6 flex items-center justify-center">  </button>
+                    <button 
+                        className="border w-6 h-6 flex items-center justify-center"
+                        onClick={() => onToggleCompletion(task.id)}
+                        >
+                            {task.is_completed ? <FaCheck /> : ""} 
+                        </button>
                     <p>{ task.name }</p>
                 </div>
                 <FaRegTrashAlt className="text-red-400 mr-1"/>
@@ -46,7 +51,7 @@ export const TaskCard = ({ task }: TaskCard ) => {
                         </div>
                         <div className="flex items-center gap-1">
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
-                            <span className="w-8 text-center text-xs text-emerald-400">0</span>
+                            <span className="w-8 text-center text-xs text-emerald-400">{silverReward}</span>
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
                         </div>
                     </div>
@@ -58,7 +63,7 @@ export const TaskCard = ({ task }: TaskCard ) => {
                         </div>
                         <div className="flex items-center gap-1">
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">-</button>
-                            <span className="w-8 text-center text-xs text-emerald-400">0</span>
+                            <span className="w-8 text-center text-xs text-emerald-400">{goldReward}</span>
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent text-emerald-400 hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors">+</button>
                         </div>
                     </div>

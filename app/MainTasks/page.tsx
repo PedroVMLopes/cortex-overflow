@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { TaskCard } from "../Components/taskCard";
 
 export interface Task {
-    id?: number;
+    id: number;
     created_at?: Date;
     name: string;
     attribute?: string;
