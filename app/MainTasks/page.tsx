@@ -3,29 +3,31 @@
 import { useState, useEffect } from "react";
 import { TaskCard } from "../Components/taskCard";
 
+export interface Task {
+    id?: number;
+    created_at?: Date;
+    name: string;
+    attribute?: string;
+    silver_reward?: number;
+    gold_reward?: number;
+    is_completed: boolean;
+    user_id: 1;
+}
+
 export default function MainTasks() {
 
     const [ tasks, setTasks ] = useState<Task[]>([])
     const [ taskName, setTaskName ] = useState("");
-
-    interface Task {
-        id?: number;
-        created_at?: Date;
-        name: string;
-        attribute?: string;
-        silver_amount?: number;
-        gold_amount?: number;
-        is_completed: boolean;
-        user_id: 1;
-    }
-
-
+    
     function createTask(inputName: string): void {
+        const numberOfTasks: number = tasks.length;
+        
         const newTask: Task = {
+            id: numberOfTasks + 1,
             name: inputName,
             attribute: "",
-            silver_amount: 0,
-            gold_amount: 0,
+            silver_reward: 0,
+            gold_reward: 0,
             is_completed: false,
             user_id: 1
         }
@@ -33,6 +35,10 @@ export default function MainTasks() {
         setTasks(prevTasks => [...prevTasks, newTask]);
         setTaskName("");
         console.log("Task Criada: ", newTask.name);
+    }
+
+    const toggleTaskCompletion = (id: number) => {
+        setTasks(tasks.map(task => task.id === id ? { ...task, is_completed: !task.is_completed } : task ));
     }
 
 
@@ -58,11 +64,10 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map(task => (
-                    <div key={task.name} className="">
-                        <TaskCard />
-                    </div>
+                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion}/>
                 ))}
             </div>
         </>
     )
 }
+

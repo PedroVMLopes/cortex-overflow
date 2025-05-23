@@ -1,14 +1,26 @@
+import { useState } from "react";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
+import { Task } from "../MainTasks/page"
 
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
-export const TaskCard = () => {
+interface TaskCard {
+    task: Task;
+    onToggleCompletion: (id: number) => void;
+}
+
+export const TaskCard = ({ task }: TaskCard ) => {
+
+    const [ silverReward, setSilverReward ] = useState(0);
+    const [ goldReward, setGoldReward ] = useState(0);
+    const [ selectedAttribute, setSelectedAttribute ] = useState("");
+
     return (
         <div className="font-mono border">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-2">
                     <button className="border w-6 h-6 flex items-center justify-center">  </button>
-                    <p>Titulo</p>
+                    <p>{ task.name }</p>
                 </div>
                 <FaRegTrashAlt className="text-red-400 mr-1"/>
             </div>
