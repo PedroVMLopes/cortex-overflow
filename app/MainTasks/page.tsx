@@ -60,6 +60,10 @@ export default function MainTasks() {
         )
     }
 
+    const deleteTask = (id: number) => {
+        setTasks(tasks.filter( task => task.id !== id ));
+    }
+
 
     return (
         <>
@@ -83,7 +87,7 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map(task => (
-                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward}/>
+                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward} onTaskDelete={deleteTask}/>
                 ))}
             </div>
         </>

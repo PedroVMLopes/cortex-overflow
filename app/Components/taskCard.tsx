@@ -8,15 +8,17 @@ interface TaskCard {
     task: Task;
     onToggleCompletion: (id: number) => void;
     onRewardUpdate: (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => void;
+    onTaskDelete: (id: number) => void;
 }
 
-export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate }: TaskCard ) => {
+export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate, onTaskDelete }: TaskCard ) => {
 
     return (
         <div className={`font-mono border mt-3 ${task.is_completed && "opacity-40"}`}>
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-2">
                     <button 
+                        id="CompleteTaskButton"
                         className="border w-6 h-6 flex items-center justify-center hover:bg-emerald-900"
                         onClick={() => onToggleCompletion(task.id)}
                         >
@@ -24,7 +26,12 @@ export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate }: TaskCard 
                         </button>
                     <p>{ task.name }</p>
                 </div>
-                <FaRegTrashAlt className="text-red-400 opacity-70 mr-1"/>
+                <button
+                    id="DeleteTaskButton"
+                    onClick={() => onTaskDelete(task.id)}
+                >
+                    <FaRegTrashAlt className="text-red-400 opacity-70 hover:opacity-100 mr-1"/>
+                </button>
             </div>
 
             <div className="flex flex-row mt-2 justify-between">
