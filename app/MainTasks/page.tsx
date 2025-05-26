@@ -18,6 +18,7 @@ export default function MainTasks() {
 
     const [ tasks, setTasks ] = useState<Task[]>([])
     const [ taskName, setTaskName ] = useState("");
+    const [ taskAttribute, setTaskAttribute ] = useState("");
     
     function createTask(inputName: string): void {
         const numberOfTasks: number = tasks.length;
@@ -64,6 +65,13 @@ export default function MainTasks() {
         setTasks(tasks.filter( task => task.id !== id ));
     }
 
+    const setAttribute = (id: number, att: string) => {
+        tasks.forEach(task => {
+            if (task.id === id){ task.attribute = att };
+        })
+        setTaskAttribute(att);
+    }
+
 
     return (
         <>
@@ -87,7 +95,7 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map(task => (
-                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward} onTaskDelete={deleteTask}/>
+                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward} onTaskDelete={deleteTask} onAttributeChange={setAttribute}/>
                 ))}
             </div>
         </>

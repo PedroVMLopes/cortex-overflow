@@ -9,9 +9,10 @@ interface TaskCard {
     onToggleCompletion: (id: number) => void;
     onRewardUpdate: (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => void;
     onTaskDelete: (id: number) => void;
+    onAttributeChange: (id: number, att: string) => void;
 }
 
-export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate, onTaskDelete }: TaskCard ) => {
+export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate, onTaskDelete, onAttributeChange }: TaskCard ) => {
 
     return (
         <div className={`font-mono border mt-3 ${task.is_completed && "opacity-40"}`}>
@@ -40,7 +41,8 @@ export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate, onTaskDelet
                     {attributes.map(att => (
                         <button 
                             key={att}
-                            className="hover:bg-emerald-900 p-0.5"
+                            className={`p-0.5 hover:bg-emerald-900 ${task.attribute === att ? "bg-emerald-800" : ""} `}
+                            onClick={() => onAttributeChange(task.id, att)}
                             >{att}</button>
                     ))}
                 </div>
