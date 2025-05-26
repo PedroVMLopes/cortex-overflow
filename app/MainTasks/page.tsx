@@ -14,13 +14,6 @@ export interface Task {
     user_id: 1;
 }
 
-export interface User {
-    name: string;
-    silver_amount: number;
-    gold_amount: number;
-    gem_amount: number;
-}
-
 export default function MainTasks() {
 
     const [ tasks, setTasks ] = useState<Task[]>([])

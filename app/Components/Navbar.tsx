@@ -1,7 +1,13 @@
+"use client"
+
 import { GiCyborgFace, GiCyberEye, GiCrownedSkull, GiOpenTreasureChest, GiCrownCoin, GiGems } from "react-icons/gi";
 import Link from "next/link";
+import { useContext } from "react";
+import { useUser } from "../context/UserContext";
 
-export default function Navbar():any {
+export const Navbar = () => {
+
+    const { user } = useUser();
 
     return (
         <div className="fixed bottom-0 w-full font-mono text-emerald-500">
