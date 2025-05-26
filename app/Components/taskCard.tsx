@@ -41,7 +41,7 @@ export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate, onTaskDelet
                     {attributes.map(att => (
                         <button 
                             key={att}
-                            className={`p-0.5 hover:bg-emerald-900 ${task.attribute === att ? "bg-emerald-800" : ""} `}
+                            className={`p-0.5 hover:bg-emerald-900 ${task.attribute === att ? "bg-emerald-900" : ""} `}
                             onClick={() => onAttributeChange(task.id, att)}
                             >{att}</button>
                     ))}

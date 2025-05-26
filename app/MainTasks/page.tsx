@@ -14,6 +14,13 @@ export interface Task {
     user_id: 1;
 }
 
+export interface User {
+    name: string;
+    silver_amount: number;
+    gold_amount: number;
+    gem_amount: number;
+}
+
 export default function MainTasks() {
 
     const [ tasks, setTasks ] = useState<Task[]>([])
@@ -21,20 +28,21 @@ export default function MainTasks() {
     const [ taskAttribute, setTaskAttribute ] = useState("");
     
     function createTask(inputName: string): void {
-        const numberOfTasks: number = tasks.length;
-        
-        const newTask: Task = {
-            id: numberOfTasks + 1,
-            name: inputName,
-            attribute: "",
-            silver_reward: 0,
-            gold_reward: 0,
-            is_completed: false,
-            user_id: 1
+        if (inputName) {
+            const numberOfTasks: number = tasks.length;
+            const newTask: Task = {
+                id: numberOfTasks + 1,
+                name: inputName,
+                attribute: "",
+                silver_reward: 0,
+                gold_reward: 0,
+                is_completed: false,
+                user_id: 1
+            }
+            
+            setTasks(prevTasks => [...prevTasks, newTask]);
+            setTaskName("");
         }
-        
-        setTasks(prevTasks => [...prevTasks, newTask]);
-        setTaskName("");
     }
 
     const toggleTaskCompletion = (id: number) => {
