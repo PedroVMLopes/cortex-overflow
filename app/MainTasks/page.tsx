@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { TaskCard } from "../Components/taskCard";
+import { useUser } from "../context/UserContext";
 
 export interface Task {
     id: number;
@@ -11,6 +12,7 @@ export interface Task {
     silver_reward: number;
     gold_reward: number;
     is_completed: boolean;
+    reward_given: boolean;
     user_id: 1;
 }
 
@@ -19,6 +21,7 @@ export default function MainTasks() {
     const [ tasks, setTasks ] = useState<Task[]>([])
     const [ taskName, setTaskName ] = useState("");
     const [ taskAttribute, setTaskAttribute ] = useState("");
+    const { user, setUser } = useUser();
     
     function createTask(inputName: string): void {
         if (inputName) {
@@ -30,6 +33,7 @@ export default function MainTasks() {
                 silver_reward: 0,
                 gold_reward: 0,
                 is_completed: false,
+                reward_given: false,
                 user_id: 1
             }
             
@@ -39,8 +43,26 @@ export default function MainTasks() {
     }
 
     const toggleTaskCompletion = (id: number) => {
-        setTasks(tasks.map(task => task.id === id ? { ...task, is_completed: !task.is_completed } : task ));
-    }
+        setTasks(tasks.map(task =>
+            task.id === id
+            ? { ...task, is_completed: !task.is_completed }
+            : task
+        ));
+    };
+
+    // Rewards the player when the task is completed for the first time
+    useEffect(() => {
+        tasks.forEach(task => {
+            if (task.is_completed && !task.reward_given) {
+                setUser(prev => ({
+                    ...prev,
+                    silver_amount: prev.silver_amount + task.silver_reward,
+                    gold_amount: prev.gold_amount + task.gold_reward,
+                }))
+                task.reward_given = true;
+            }
+        });
+    }, [tasks])
 
     const updateTaskReward = (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => {
         setTasks(prevTasks => 

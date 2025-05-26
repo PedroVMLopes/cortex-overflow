@@ -12,28 +12,26 @@ export const Navbar = () => {
     return (
         <div className="fixed bottom-0 w-full font-mono text-emerald-500">
             <div className="grid grid-cols-3 gap-0.5 items-center text-center border bg-emerald-900 border-emerald-900">
+
                 <div className="flex flex-col justify-center items-center bg-emerald-950 py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-gray-400"/>
-                        <p>0</p>
+                        <p>{user.silver_amount}</p>
                     </div>
-                    {/* <p className="text-xs opacity-60">SILVER</p> */}
                 </div>
 
                 <div className="flex flex-col justify-center items-center bg-emerald-950 py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-amber-300"/>
-                        <p>0</p>
+                        <p>{user.gold_amount}</p>
                     </div>
-                    {/* <p className="text-xs opacity-60">GOLD</p> */}
                 </div>
                     
                 <div className="flex flex-col justify-center items-center bg-emerald-950 py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiGems className="text-blue-400"/>
-                        <p>0</p>
+                        <p>{user.gem_amount}</p>
                     </div>
-                    {/* <p className="text-xs opacity-60">GEMS</p> */}
                 </div>
                     
             </div>
