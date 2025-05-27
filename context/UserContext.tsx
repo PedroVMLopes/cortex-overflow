@@ -1,13 +1,7 @@
 "use client"
 
 import { createContext, useContext, useState } from "react";
-
-export interface User {
-    name: string;
-    silver_amount: number;
-    gold_amount: number;
-    gem_amount: number;
-}
+import { User } from "@/types/user";
 
 interface UserContextType {
     user: User;

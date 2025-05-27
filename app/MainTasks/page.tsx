@@ -1,20 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { TaskCard } from "../Components/taskCard";
-import { useUser } from "../context/UserContext";
+import { TaskCardComponent } from "../../components/taskCard";
+import { useUser } from "../../context/UserContext";
+import { Task } from "@/types/task";
 
-export interface Task {
-    id: number;
-    created_at?: Date;
-    name: string;
-    attribute?: string;
-    silver_reward: number;
-    gold_reward: number;
-    is_completed: boolean;
-    reward_given: boolean;
-    user_id: 1;
-}
 
 export default function MainTasks() {
 
@@ -118,7 +108,7 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map(task => (
-                    <TaskCard key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward} onTaskDelete={deleteTask} onAttributeChange={setAttribute}/>
+                    <TaskCardComponent key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward} onTaskDelete={deleteTask} onAttributeChange={setAttribute}/>
                 ))}
             </div>
         </>

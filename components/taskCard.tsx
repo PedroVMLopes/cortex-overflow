@@ -1,18 +1,10 @@
 import { useState } from "react";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
-import { Task } from "../MainTasks/page"
+import { TaskCard } from "@/types/taskCard";
 
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
-interface TaskCard {
-    task: Task;
-    onToggleCompletion: (id: number) => void;
-    onRewardUpdate: (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => void;
-    onTaskDelete: (id: number) => void;
-    onAttributeChange: (id: number, att: string) => void;
-}
-
-export const TaskCard = ({ task, onToggleCompletion, onRewardUpdate, onTaskDelete, onAttributeChange }: TaskCard ) => {
+export const TaskCardComponent = ({ task, onToggleCompletion, onRewardUpdate, onTaskDelete, onAttributeChange }: TaskCard ) => {
 
     return (
         <div className={`font-mono border mt-3 ${task.is_completed && "opacity-40"}`}>
