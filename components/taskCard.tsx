@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
-import { Task } from "@/types/task";
+import { TaskCard } from "@/types/taskCard";
+import { useTasks } from "@/hooks/useTasks";
 
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
-export const TaskCard = ( { name, silver_reward, gold_reward, is_completed, attribute }: Task ) => {
+export const TaskCardComponent = ( { task, onTaskRemove }: TaskCard ) => {
+    const { id, name, silver_reward, gold_reward, is_completed, attribute } = task;
 
     return (
         <div className={`font-mono border mt-3 ${is_completed && "opacity-40"}`}>
@@ -20,6 +22,7 @@ export const TaskCard = ( { name, silver_reward, gold_reward, is_completed, attr
                 </div>
                 <button
                     id="DeleteTaskButton"
+                    onClick={() => onTaskRemove(id, 1)}
                 >
                     <FaRegTrashAlt className="text-red-400 opacity-70 hover:opacity-100 mr-1"/>
                 </button>

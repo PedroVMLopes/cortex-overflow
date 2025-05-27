@@ -37,3 +37,12 @@ export async function createTask(name: string, userId: number): Promise<Task> {
 
     return data as Task;
 }
+
+export async function deleteTask(id: number, userId: number){
+    const { error } = await supabase
+     .from('tasks')
+     .delete()
+     .eq('id', id);
+
+    if (error) throw new Error(error.message);
+}

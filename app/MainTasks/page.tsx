@@ -2,15 +2,14 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import { TaskCard } from "../../components/taskCard";
+import { TaskCardComponent } from "../../components/taskCard";
 import { useTasks } from "@/hooks/useTasks";
 import { createTask } from "@/services/taskServices";
-
 
 export default function MainTasks() {
 
     const [ taskName, setTaskName ] = useState("");
-    const { tasks, loading, setTasks } = useTasks();
+    const { tasks, loading, setTasks, removeTaskById } = useTasks();
 
     const handleCreateTask = async () => {
         if (!taskName.trim()) return;
@@ -46,7 +45,7 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map( ( task ) => (
-                    <TaskCard key={task.id} {...task} />
+                    <TaskCardComponent key={task.id} task={task} onTaskRemove={removeTaskById}/>
                 ))}
             </div>
         </>
