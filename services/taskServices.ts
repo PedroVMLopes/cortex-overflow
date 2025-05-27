@@ -14,3 +14,26 @@ export async function fetchTasks(): Promise<Task[]> {
 
     return data || [];
 }
+
+export async function createTask(name: string, userId: number): Promise<Task> {
+    const { data, error } = await supabase
+        .from('tasks')
+        .insert({
+            name,
+            user_id: userId,
+            attribute: '',
+            silver_reward: 0,
+            gold_reward: 0,
+            is_completed: false,
+            reward_given: false
+        })
+        .select()
+        .single();
+
+    if (error) {
+        console.error("Erro ao criar task: ", error.message);
+        throw error;
+    }
+
+    return data as Task;
+}

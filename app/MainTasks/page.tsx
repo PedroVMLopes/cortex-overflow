@@ -1,21 +1,28 @@
 'use client'
 
-import { useState, useEffect } from "react";
-import { TaskCardComponent } from "../../components/taskCard";
-import { useUser } from "../../context/UserContext";
-import { Task } from "@/types/task";
-
 import React from "react";
+import { useState, useEffect } from "react";
+import { TaskCard } from "../../components/taskCard";
 import { useTasks } from "@/hooks/useTasks";
+import { createTask } from "@/services/taskServices";
 
 
 export default function MainTasks() {
 
     const [ taskName, setTaskName ] = useState("");
-    const { tasks, loading } = useTasks();
-    
-    
+    const { tasks, loading, setTasks } = useTasks();
 
+    const handleCreateTask = async () => {
+        if (!taskName.trim()) return;
+
+        try {
+            const newTask = await createTask(taskName, 1); // 1 = ID fixo
+            setTasks(prev => [...prev, newTask]);
+            setTaskName('');
+        } catch (error) {
+            alert('Erro ao criar task. Veja o console.');
+        }
+    };
 
     return (
         <>
@@ -30,6 +37,7 @@ export default function MainTasks() {
                 />
                 <button 
                     className="bg-emerald-950 p-1 px-2 w-fit text-nowrap animate-pulse"
+                    onClick={handleCreateTask}
                 > 
                     + ADD
                 </button>
@@ -37,13 +45,8 @@ export default function MainTasks() {
 
             {/* TaskCard list render */}
             <div className="mt-4">
-                {tasks.map(task => (
-                    <li key={task.id}>
-                        <p><strong>{task.name}</strong></p>
-                        <p className="text-sm text-gray-600">
-                            Status: {task.is_completed ? "Concluída" : "Pendente"}
-                        </p>
-                    </li>
+                {tasks.map( ( task ) => (
+                    <TaskCard key={task.id} {...task} />
                 ))}
             </div>
         </>
