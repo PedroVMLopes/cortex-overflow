@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 import { TaskCard } from "@/types/taskCard";
-import { useTasks } from "@/hooks/useTasks";
 
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
-export const TaskCardComponent = ( { task, onTaskRemove }: TaskCard ) => {
+export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate }: TaskCard ) => {
     const { id, name, silver_reward, gold_reward, is_completed, attribute } = task;
 
     return (
@@ -49,9 +47,11 @@ export const TaskCardComponent = ( { task, onTaskRemove }: TaskCard ) => {
                         </div>
                         <div className="flex items-center gap-1 text-gray-300">
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 1, 'silver_reward', 'decrease')}
                             >-</button>
                             <span className="w-8 text-center text-xs">{silver_reward}</span>
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 1, 'silver_reward', 'increase')}
                             >+</button>
                         </div>
                     </div>
@@ -63,9 +63,11 @@ export const TaskCardComponent = ( { task, onTaskRemove }: TaskCard ) => {
                         </div>
                         <div className="flex items-center gap-1 text-gray-300">
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 1, 'gold_reward', 'decrease')}
                             >-</button>
                             <span className="w-8 text-center text-xs">{gold_reward}</span>
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
+                            onClick={() => onRewardUpdate(task.id, 1, 'gold_reward', 'increase')}
                             >+</button>
                         </div>
                     </div>

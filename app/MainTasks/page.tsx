@@ -9,7 +9,7 @@ import { createTask } from "@/services/taskServices";
 export default function MainTasks() {
 
     const [ taskName, setTaskName ] = useState("");
-    const { tasks, loading, setTasks, removeTaskById } = useTasks();
+    const { tasks, loading, setTasks, removeTaskById, updateTaskReward } = useTasks();
 
     const handleCreateTask = async () => {
         if (!taskName.trim()) return;
@@ -45,7 +45,7 @@ export default function MainTasks() {
             {/* TaskCard list render */}
             <div className="mt-4">
                 {tasks.map( ( task ) => (
-                    <TaskCardComponent key={task.id} task={task} onTaskRemove={removeTaskById}/>
+                    <TaskCardComponent key={task.id} task={task} onTaskRemove={removeTaskById} onRewardUpdate={updateTaskReward}/>
                 ))}
             </div>
         </>

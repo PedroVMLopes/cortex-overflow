@@ -2,7 +2,8 @@ import { Task } from "./task";
 
 export interface TaskCard {
     task: Task;
-    onTaskRemove: (id: number, user_id: number) => void;
+    onTaskRemove: (id: number, userId: number) => void;
+    onRewardUpdate: (id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', operation: 'increase' | 'decrease') => void;
 }
 
 /*

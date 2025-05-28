@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { deleteTask, fetchTasks } from "@/services/taskServices";
+import { deleteTask, fetchTasks, updateRewardOnDB } from "@/services/taskServices";
 import { Task } from "@/types/task";
+import { useDebouncedCallback } from "use-debounce";
+
 
 export function useTasks() {
     const [ tasks, setTasks ] = useState<Task[]>([]);
@@ -17,7 +19,8 @@ export function useTasks() {
         loadTasks();
     }, []);
 
-    // Function to delete tasks locally
+
+    // Calls the function that removes the task in the DB then remove the taks locally
     async function removeTaskById(id: number, userId: number) {
         try {
             await deleteTask(id, 1);
@@ -28,11 +31,49 @@ export function useTasks() {
         }
     }
 
+
+    // Delays the call to the database on reward update
+    const debouncedUpdate = useDebouncedCallback((
+        id: number,
+        userId: number,
+        rewardType: 'silver_reward' | 'gold_reward',
+        newValue: number
+    ) => {
+        updateRewardOnDB(id, 1, rewardType, newValue);
+    }, 500);
+
+    async function updateTaskReward(id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', operation: 'increase' | 'decrease') {
+        const task = tasks.find(t => t.id === id);
+        if (!task) return;
+        
+        // Logic to update the reward to the new one
+        const currentValue = task[rewardType] ?? 0;
+        const delta = operation === 'increase' ? 1 : -1;
+        const newValue = Math.max(0, currentValue + delta);
+        
+        // Calls the function that updates it on the DB
+        try {
+            debouncedUpdate(id, userId, rewardType, newValue);
+        } catch (error) {
+            console.error('Erro ao atualizar recompensa: ', error);
+            return;
+        }
+
+        // Updates the state with the new value
+        setTasks(prev => 
+            prev.map(t =>
+                t.id === id ? {...t, [rewardType]: newValue} : t
+            )
+        );
+    }
+
+
     return { 
         tasks, 
         loading, 
         setTasks, 
-        removeTaskById 
+        removeTaskById,
+        updateTaskReward
     };
 
 }

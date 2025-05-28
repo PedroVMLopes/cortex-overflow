@@ -46,3 +46,15 @@ export async function deleteTask(id: number, userId: number){
 
     if (error) throw new Error(error.message);
 }
+
+export async function updateRewardOnDB(id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', newValue: number) {
+    const { error } = await supabase
+        .from('tasks')
+        .update({ [rewardType]: newValue })
+        .eq('id', id);
+
+    if (error) {
+        console.error("Erro ao criar task no Supabase: ", error.message);
+        throw error;
+    }
+}
