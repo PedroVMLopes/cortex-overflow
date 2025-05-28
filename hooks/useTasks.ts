@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteTask, fetchTasks, updateRewardOnDB } from "@/services/taskServices";
+import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnBD } from "@/services/taskServices";
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -39,7 +39,7 @@ export function useTasks() {
         rewardType: 'silver_reward' | 'gold_reward',
         newValue: number
     ) => {
-        updateRewardOnDB(id, 1, rewardType, newValue);
+        updateTaskRewardOnDB(id, 1, rewardType, newValue);
     }, 500);
 
     async function updateTaskReward(id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', operation: 'increase' | 'decrease') {
@@ -68,12 +68,34 @@ export function useTasks() {
     }
 
 
+    async function toggleTaskCompletion(id: number, userId: number, completionStatus: boolean) {
+        const task = tasks.find(t => t.id === id);
+        if (!task) return
+
+        const newStatus = !completionStatus;
+
+        try {
+            await updateCompletionOnBD(id, 1, newStatus)
+        } catch (error) {
+            console.error('Erro ao mudar o estado de finalização da tarefa: ', error);
+            return;
+        }
+
+        setTasks(prev => 
+            prev.map(t => 
+                t.id === id ? {...t, is_completed: newStatus} : t
+            )
+        )
+    }
+
+
     return { 
         tasks, 
         loading, 
         setTasks, 
         removeTaskById,
-        updateTaskReward
+        updateTaskReward,
+        toggleTaskCompletion
     };
 
 }

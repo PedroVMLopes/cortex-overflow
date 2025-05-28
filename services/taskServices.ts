@@ -47,7 +47,7 @@ export async function deleteTask(id: number, userId: number){
     if (error) throw new Error(error.message);
 }
 
-export async function updateRewardOnDB(id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', newValue: number) {
+export async function updateTaskRewardOnDB(id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', newValue: number) {
     const { error } = await supabase
         .from('tasks')
         .update({ [rewardType]: newValue })
@@ -55,6 +55,18 @@ export async function updateRewardOnDB(id: number, userId: number, rewardType: '
 
     if (error) {
         console.error("Erro ao criar task no Supabase: ", error.message);
+        throw error;
+    }
+}
+
+export async function updateCompletionOnBD(id: number, userId: number, completionStatus: boolean) {
+    const { error } = await supabase
+        .from('tasks')
+        .update({ is_completed: completionStatus })
+        .eq('id', id);
+
+    if( error ) {
+        console.error("Erro ao mudar o status de finalização da tarefa: ", error.message);
         throw error;
     }
 }

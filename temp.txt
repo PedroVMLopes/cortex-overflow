@@ -1,21 +1,3 @@
-function createTask(inputName: string): void {
-    if (inputName) {
-        const numberOfTasks: number = tasks.length;
-        const newTask: Task = {
-            id: numberOfTasks + 1,
-            name: inputName,
-            attribute: "",
-            silver_reward: 0,
-            gold_reward: 0,
-            is_completed: false,
-            reward_given: false,
-            user_id: 1
-        }
-        
-        setTasks(prevTasks => [...prevTasks, newTask]);
-        setTaskName("");
-    }
-}
 
 const toggleTaskCompletion = (id: number) => {
     setTasks(tasks.map(task =>
@@ -39,30 +21,6 @@ useEffect(() => {
     });
 }, [tasks])
 
-const updateTaskReward = (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => {
-    setTasks(prevTasks => 
-        prevTasks.map(task => {
-            if (task.id !== id) return task;
-
-            return {
-                ...task,
-                silver_reward:
-                    type === 'silver'
-                        ? Math.max(0, (task.silver_reward ?? 0) + (operation === 'increase' ? 1 : -1 ))
-                        : task.silver_reward,
-                gold_reward:
-                    type === 'gold'
-                        ? Math.max(0, (task.gold_reward ?? 0) + (operation === 'increase' ? 1 : -1 ))
-                        : task.gold_reward,
-            };
-        })
-    )
-}
-
-const deleteTask = (id: number) => {
-    setTasks(tasks.filter( task => task.id !== id ));
-}
-
 const setAttribute = (id: number, att: string) => {
     tasks.forEach(task => {
         if (task.id === id){ task.attribute = att };
@@ -70,6 +28,3 @@ const setAttribute = (id: number, att: string) => {
     setTaskAttribute(att);
 }
 
-
-
-<TaskCardComponent key={task.id} task={task} onToggleCompletion={toggleTaskCompletion} onRewardUpdate={updateTaskReward} onTaskDelete={deleteTask} onAttributeChange={setAttribute}/>
