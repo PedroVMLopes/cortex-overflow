@@ -52,7 +52,7 @@ export function useTasks() {
         newValue: number
     ) => {
         updateTaskRewardOnDB(id, 1, rewardType, newValue);
-    }, 500);
+    }, 2000);
 
     async function updateTaskReward(id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', operation: 'increase' | 'decrease') {
         const task = tasks.find(t => t.id === id);

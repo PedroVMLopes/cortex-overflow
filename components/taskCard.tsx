@@ -10,23 +10,24 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
     if (!userData) return "Loading...";
 
     return (
-        <div className={`font-mono border mt-3 ${is_completed && "opacity-40"}`}>
-            <div className="flex flex-row items-center justify-between">
-                <div className="flex flex-row gap-2">
+        <div className={`flex flex-col justify-between font-mono border border-emerald-700 ${is_completed && "opacity-40"}`}>
+            <div className="flex flex-row items-start justify-between w-full">
+                <div className="flex flex-row gap-2 w-full max-w-11/12">
                     <button 
                         id="CompleteTaskButton"
-                        className="border w-6 h-6 flex items-center justify-center hover:bg-emerald-900"
+                        className="border border-emerald-700 min-w-6 h-6 flex items-center justify-center hover:bg-emerald-900"
                         onClick={() => onToggleCompletion( id, userData.id, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData, xp_reward, attribute)}
                         >
                             {is_completed ? <FaCheck /> : ""} 
                         </button>
-                    <p>{ name }</p>
+                    <p className="truncate overflow-hidden text-wrap w-full text-xl font-bold leading-5 pt-0.5">{ name }</p>
                 </div>
                 <button
                     id="DeleteTaskButton"
+                    className=""
                     onClick={() => onTaskRemove(id, 1)}
                 >
-                    <FaRegTrashAlt className="text-red-400 opacity-70 hover:opacity-100 mr-1"/>
+                    <FaRegTrashAlt className="text-red-400 opacity-70 hover:opacity-100 pr-1 pt-1 ml-1"/>
                 </button>
             </div>
 

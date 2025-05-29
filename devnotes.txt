@@ -1,0 +1,25 @@
+Fluxo de trabalho com o git
+
+  // Terminal
+> Clonar o projeto para criar uma nova branch
+    git checkout -b feature/nome-da-feature
+    
+
+  // Terminal
+> Desenvolver localmente e fazer commits
+    git add .
+    git commit -m "feat: Adiciona nova funcionalidade X"
+
+
+  // Terminal
+> Subir para o GitHub 
+    git push origin feature/nome-da-feature
+
+
+> Criar um Pull Request para a branch develop
+  Usar a interface do GitHub ou o comando abaixo:
+    // comando para fazer o pull request pelo bash
+    gh pr create --base develop --head feature/nome-da-feature --title "feat: nome da feature" --body "Descrição da feature"
+    
+
+> Fazer o merge no pull request após revisar o código

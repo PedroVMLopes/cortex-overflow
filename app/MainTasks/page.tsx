@@ -10,6 +10,8 @@ export default function MainTasks() {
 
     const [ taskName, setTaskName ] = useState("");
     const { tasks, loading, setTasks, removeTaskById, updateTaskReward, toggleTaskCompletion, toggleTaskAttribute } = useTasks();
+    const now = new Date().getTime();
+    const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
     const handleCreateTask = async () => {
         if (!taskName.trim()) return;
@@ -23,7 +25,19 @@ export default function MainTasks() {
         }
     };
 
-    const orderTasks = tasks.sort((a, b) => {
+    // Excludes from the list the tasks that were completed in more than 24h 
+    const filteredTasks = tasks.filter(task => {
+        const createdAt = new Date(task.created_at).getTime();
+
+        // Always shows the unfinished tasks
+        if (!task.is_completed) return true;
+
+        // Shows the tasks completed in the last 24h
+        return now - createdAt <= ONE_DAY_MS;
+    })
+
+    // Orders the tasks according to their reward and completion
+    const orderTasks = filteredTasks.sort((a, b) => {
         // Order the uncompleted tasks first
         if(a.is_completed !== b.is_completed) {
             return a.is_completed ? 1 : -1;
@@ -47,8 +61,8 @@ export default function MainTasks() {
             <div className="flex justify-between border border-emerald-800">
                 <input 
                     type="text" 
-                    placeholder="Crie uma nova missão..."
-                    className="bg-black pl-1 w-full"
+                    placeholder="[ Crie uma nova missão ]"
+                    className="bg-black pl-1 w-full text-sm"
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
                 />
@@ -61,7 +75,7 @@ export default function MainTasks() {
             </div>
 
             {/* TaskCard list render */}
-            <div className="mt-4">
+            <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {orderTasks.map( ( task ) => (
                     <TaskCardComponent 
                         key={task.id} 
