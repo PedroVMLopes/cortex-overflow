@@ -2,11 +2,11 @@
 
 import { GiCyborgFace, GiCyberEye, GiCrownedSkull, GiOpenTreasureChest, GiCrownCoin, GiGems } from "react-icons/gi";
 import Link from "next/link";
-import { useUser } from "../context/UserContext";
+import { useUserContext } from "../context/UserContext";
 
 export const Navbar = () => {
 
-    const { user } = useUser();
+    const { userData } = useUserContext();
 
     return (
         <div className="fixed bottom-0 w-full font-mono text-emerald-500">
@@ -15,21 +15,21 @@ export const Navbar = () => {
                 <div className="flex flex-col justify-center items-center py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-gray-400"/>
-                        <p>{user.silver_amount}</p>
+                        <p>{userData?.silver_amount}</p>
                     </div>
                 </div>
 
                 <div className="flex flex-col justify-center items-center border-r border-l border-emerald-900 py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-amber-300"/>
-                        <p>{user.gold_amount}</p>
+                        <p>{userData?.gold_amount}</p>
                     </div>
                 </div>
                     
                 <div className="flex flex-col justify-center items-center py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiGems className="text-blue-400"/>
-                        <p>{user.gem_amount}</p>
+                        <p>{userData?.gem_amount}</p>
                     </div>
                 </div>
                     
