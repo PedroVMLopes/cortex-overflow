@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { TaskCardComponent } from "../../components/taskCard";
 import { useTasks } from "@/hooks/useTasks";
 import { createTask } from "@/services/taskServices";
@@ -22,6 +22,24 @@ export default function MainTasks() {
             alert('Erro ao criar task. Veja o console.');
         }
     };
+
+    const orderTasks = tasks.sort((a, b) => {
+        // Order the uncompleted tasks first
+        if(a.is_completed !== b.is_completed) {
+            return a.is_completed ? 1 : -1;
+        }
+
+        // Calculates the reward total (10 silver = 1 gold)
+        const aReward = a.gold_reward * 10 + a.silver_reward;
+        const bReward = b.gold_reward * 10 + b.silver_reward;
+
+        if (aReward !== bReward) {
+            return bReward - aReward;
+        }
+
+        // If the reward is the same sorts by creation date
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+    })
 
     return (
         <>
@@ -44,7 +62,7 @@ export default function MainTasks() {
 
             {/* TaskCard list render */}
             <div className="mt-4">
-                {tasks.map( ( task ) => (
+                {orderTasks.map( ( task ) => (
                     <TaskCardComponent 
                         key={task.id} 
                         task={task} 

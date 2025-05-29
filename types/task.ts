@@ -7,6 +7,6 @@ export interface Task {
     reward_given: boolean;
     user_id: number;
     xp_reward: number;
+    created_at: Date;
     attribute?: string;
-    created_at?: Date;
 }
