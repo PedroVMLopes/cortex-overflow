@@ -1,11 +1,12 @@
 export interface Task {
     id: number;
-    created_at?: Date;
     name: string;
-    attribute?: string;
     silver_reward: number;
     gold_reward: number;
     is_completed: boolean;
     reward_given: boolean;
-    user_id: 1;
+    user_id: number;
+    xp_reward: number;
+    attribute?: string;
+    created_at?: Date;
 }

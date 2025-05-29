@@ -7,13 +7,15 @@ export interface TaskCard {
     onRewardUpdate: (id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', operation: 'increase' | 'decrease') => void;
     onToggleCompletion: (
         id: number, 
-        userId: number, 
+        userId: number,
         silver_reward: number, 
         gold_reward: number, 
         completionStatus: boolean, 
         wasRewardGiven: boolean,
         userData: User,
-        refreshUserData: () => void
+        refreshUserData: () => void,
+        xpReward: number,
+        attribute?: string
     ) => void;
     onToggleAttribute: (id: number, userId: number, attributeName: string) => void;
 }

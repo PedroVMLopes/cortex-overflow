@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnDB, giveTaskRewardToUser, updateTaskAttributesOnDB } from "@/services/taskServices";
+import { 
+    deleteTask, 
+    fetchTasks, 
+    updateTaskRewardOnDB, 
+    updateCompletionOnDB, 
+    giveTaskRewardToUser, 
+    updateTaskAttributesOnDB, 
+    getUserAttribute, 
+    updateUserAttribute 
+} from "@/services/taskServices";
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 import { useUserContext } from "@/context/UserContext";
@@ -108,6 +117,20 @@ export function useTasks() {
     }
 
 
+    async function giveTaskExperienceReward(userId: number, attributeName: string, xpReward: number) {
+        let { id, level, xp } = await getUserAttribute(userId, attributeName);
+
+        xp += xpReward;
+
+        while (xp >= 100 ) {
+            xp -= 100;
+            level += 1;
+        }
+
+        await updateUserAttribute(id, level, xp)
+    }
+
+
     async function toggleTaskCompletion(
         id: number,
         userId: number,
@@ -116,13 +139,16 @@ export function useTasks() {
         completionStatus: boolean,
         wasRewardGiven: boolean,
         userData: User,
-        refreshUserData: () => void
+        refreshUserData: () => void,
+        xpReward: number,
+        attribute?: string
     ) {
         const task = tasks.find(t => t.id === id);
         if (!task) return
 
         if (!wasRewardGiven) {
             await giveTaskReward(id, userId, silver_reward, gold_reward, userData, refreshUserData);
+            if(attribute) await giveTaskExperienceReward(userData.id, attribute, xpReward);
         }
 
         const newStatus = !completionStatus;

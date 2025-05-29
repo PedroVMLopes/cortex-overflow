@@ -5,7 +5,7 @@ import { useUserContext } from "@/context/UserContext";
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
 export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggleCompletion, onToggleAttribute }: TaskCard ) => {
-    const { id, name, silver_reward, gold_reward, is_completed, attribute, reward_given } = task;
+    const { id, name, silver_reward, gold_reward, is_completed, attribute, reward_given, xp_reward } = task;
     const { userData, refreshUserData } = useUserContext();
     if (!userData) return "Loading...";
 
@@ -16,7 +16,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                     <button 
                         id="CompleteTaskButton"
                         className="border w-6 h-6 flex items-center justify-center hover:bg-emerald-900"
-                        onClick={() => onToggleCompletion( id, userData.id, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData)}
+                        onClick={() => onToggleCompletion( id, userData.id, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData, xp_reward, attribute)}
                         >
                             {is_completed ? <FaCheck /> : ""} 
                         </button>
