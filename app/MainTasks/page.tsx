@@ -9,7 +9,7 @@ import { createTask } from "@/services/taskServices";
 export default function MainTasks() {
 
     const [ taskName, setTaskName ] = useState("");
-    const { tasks, loading, setTasks, removeTaskById, updateTaskReward, toggleTaskCompletion } = useTasks();
+    const { tasks, loading, setTasks, removeTaskById, updateTaskReward, toggleTaskCompletion, toggleTaskAttribute } = useTasks();
 
     const handleCreateTask = async () => {
         if (!taskName.trim()) return;
@@ -51,6 +51,7 @@ export default function MainTasks() {
                         onTaskRemove={removeTaskById} 
                         onRewardUpdate={updateTaskReward} 
                         onToggleCompletion={toggleTaskCompletion}
+                        onToggleAttribute={toggleTaskAttribute}
                     />
                 ))}
             </div>

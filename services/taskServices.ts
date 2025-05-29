@@ -87,3 +87,15 @@ export async function giveTaskRewardToUser(id: number, userId: number, silverRew
         console.error("Erro ao atualizar a recompensa da tarefa")
     }
 }
+
+export async function updateTaskAttributesOnDB(id: number, userId: number, attributeName: string) {
+    const { error } = await supabase
+        .from('tasks')
+        .update({ attribute: attributeName})
+        .eq('id', id);
+
+    if( error ) {
+        console.error("Erro ao mudar o status de finalização da tarefa: ", error.message);
+        throw error;
+    }
+}

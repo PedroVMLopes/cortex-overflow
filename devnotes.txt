@@ -1,0 +1,9 @@
+
+
+const setAttribute = (id: number, att: string) => {
+    tasks.forEach(task => {
+        if (task.id === id){ task.attribute = att };
+    })
+    setTaskAttribute(att);
+}
+

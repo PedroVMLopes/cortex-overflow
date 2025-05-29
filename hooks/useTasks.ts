@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnDB, giveTaskRewardToUser } from "@/services/taskServices";
+import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnDB, giveTaskRewardToUser, updateTaskAttributesOnDB } from "@/services/taskServices";
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 import { useUserContext } from "@/context/UserContext";
@@ -89,6 +89,25 @@ export function useTasks() {
     }
 
 
+    async function toggleTaskAttribute(id: number, userId: number, attributeName: string) {
+        const task = tasks.find(t => t.id === id)
+        if (!task) return
+
+        try {
+            await updateTaskAttributesOnDB(id, userId, attributeName)
+        } catch (error) {
+            console.error('Erro ao mudar o atributo da task: ', error);
+            return;
+        }
+
+        setTasks(prev => 
+            prev.map(t => 
+                t.id === id ? {...t, attribute: attributeName} : t
+            )
+        );
+    }
+
+
     async function toggleTaskCompletion(
         id: number,
         userId: number,
@@ -129,7 +148,8 @@ export function useTasks() {
         setTasks, 
         removeTaskById,
         updateTaskReward,
-        toggleTaskCompletion
+        toggleTaskCompletion,
+        toggleTaskAttribute
     };
 
 }

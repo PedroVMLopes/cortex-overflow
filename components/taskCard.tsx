@@ -4,7 +4,7 @@ import { useUserContext } from "@/context/UserContext";
 
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
-export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggleCompletion }: TaskCard ) => {
+export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggleCompletion, onToggleAttribute }: TaskCard ) => {
     const { id, name, silver_reward, gold_reward, is_completed, attribute, reward_given } = task;
     const { userData, refreshUserData } = useUserContext();
     if (!userData) return "Loading...";
@@ -37,6 +37,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                         <button 
                             key={att}
                             className={`p-0.5 hover:bg-emerald-900 ${attribute === att ? "bg-emerald-900" : ""} `}
+                            onClick={() => onToggleAttribute(id, 1, att)}
                             >{att}</button>
                     ))}
                 </div>

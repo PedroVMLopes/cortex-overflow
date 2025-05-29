@@ -15,10 +15,5 @@ export interface TaskCard {
         userData: User,
         refreshUserData: () => void
     ) => void;
+    onToggleAttribute: (id: number, userId: number, attributeName: string) => void;
 }
-
-/*
-onToggleCompletion: (id: number) => void;
-onRewardUpdate: (id: number, type: 'silver' | 'gold', operation: 'increase' | 'decrease') => void;
-onAttributeChange: (id: number, att: string) => void;
-*/
