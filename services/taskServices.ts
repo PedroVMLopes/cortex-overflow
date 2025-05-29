@@ -59,7 +59,7 @@ export async function updateTaskRewardOnDB(id: number, userId: number, rewardTyp
     }
 }
 
-export async function updateCompletionOnBD(id: number, userId: number, completionStatus: boolean) {
+export async function updateCompletionOnDB(id: number, userId: number, completionStatus: boolean, wasRewardGiven: boolean) {
     const { error } = await supabase
         .from('tasks')
         .update({ is_completed: completionStatus })
@@ -68,5 +68,16 @@ export async function updateCompletionOnBD(id: number, userId: number, completio
     if( error ) {
         console.error("Erro ao mudar o status de finalização da tarefa: ", error.message);
         throw error;
+    }
+}
+
+export async function giveTaskRewardOnDB(id: number, userId: number, silverReward: number, goldReward: number) {
+    const { error } = await supabase
+        .from('users')
+        .update({ silver_amount: silverReward, gold_amount: goldReward })
+        .eq('id', userId);
+
+    if( error ) {
+        console.error("Erro ao atualizar a recompensa da tarefa")
     }
 }

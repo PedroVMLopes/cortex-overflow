@@ -1,11 +1,4 @@
 
-const toggleTaskCompletion = (id: number) => {
-    setTasks(tasks.map(task =>
-        task.id === id
-        ? { ...task, is_completed: !task.is_completed }
-        : task
-    ));
-};
 
 // Rewards the player when the task is completed for the first time
 useEffect(() => {

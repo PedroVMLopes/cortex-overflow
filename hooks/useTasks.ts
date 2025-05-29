@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnBD } from "@/services/taskServices";
+import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnDB, giveTaskRewardOnDB } from "@/services/taskServices";
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -30,6 +30,12 @@ export function useTasks() {
             throw err;
         }
     }
+
+
+    // Rewards the player when the task is completed for the first time
+    useEffect(() => {
+        
+    }, [tasks])
 
 
     // Delays the call to the database on reward update
@@ -68,14 +74,29 @@ export function useTasks() {
     }
 
 
-    async function toggleTaskCompletion(id: number, userId: number, completionStatus: boolean) {
+    async function giveTaskReward(id: number, userId: number, silver_reward: number, gold_reward: number) {
+        
+    }
+
+
+    async function toggleTaskCompletion(
+        id: number,
+        userId: number,
+        silver_reward: number,
+        gold_reward: number,
+        completionStatus: boolean,
+        wasRewardGiven: boolean 
+    ) 
+    {
         const task = tasks.find(t => t.id === id);
         if (!task) return
+
+        if (!wasRewardGiven) {giveTaskReward(id, userId, silver_reward, gold_reward)}
 
         const newStatus = !completionStatus;
 
         try {
-            await updateCompletionOnBD(id, 1, newStatus)
+            await updateCompletionOnDB(id, 1, newStatus, wasRewardGiven)
         } catch (error) {
             console.error('Erro ao mudar o estado de finalização da tarefa: ', error);
             return;
