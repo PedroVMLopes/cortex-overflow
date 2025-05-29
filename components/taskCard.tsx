@@ -16,7 +16,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                     <button 
                         id="CompleteTaskButton"
                         className="border w-6 h-6 flex items-center justify-center hover:bg-emerald-900"
-                        onClick={() => onToggleCompletion( id, 1, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData)}
+                        onClick={() => onToggleCompletion( id, userData.id, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData)}
                         >
                             {is_completed ? <FaCheck /> : ""} 
                         </button>
@@ -37,7 +37,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                         <button 
                             key={att}
                             className={`p-0.5 hover:bg-emerald-900 ${attribute === att ? "bg-emerald-900" : ""} `}
-                            onClick={() => onToggleAttribute(id, 1, att)}
+                            onClick={() => onToggleAttribute(id, userData.id, att)}
                             >{att}</button>
                     ))}
                 </div>
@@ -52,11 +52,11 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                         </div>
                         <div className="flex items-center gap-1 text-gray-300">
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
-                            onClick={() => onRewardUpdate(task.id, 1, 'silver_reward', 'decrease')}
+                            onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'decrease')}
                             >-</button>
                             <span className="w-8 text-center text-xs">{silver_reward}</span>
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
-                            onClick={() => onRewardUpdate(task.id, 1, 'silver_reward', 'increase')}
+                            onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'increase')}
                             >+</button>
                         </div>
                     </div>
@@ -68,11 +68,11 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                         </div>
                         <div className="flex items-center gap-1 text-gray-300">
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
-                            onClick={() => onRewardUpdate(task.id, 1, 'gold_reward', 'decrease')}
+                            onClick={() => onRewardUpdate(task.id, userData.id, 'gold_reward', 'decrease')}
                             >-</button>
                             <span className="w-8 text-center text-xs">{gold_reward}</span>
                             <button className="w-6 h-6 border border-emerald-600 bg-transparent hover:bg-emerald-900 flex items-center justify-center text-xs transition-colors"
-                            onClick={() => onRewardUpdate(task.id, 1, 'gold_reward', 'increase')}
+                            onClick={() => onRewardUpdate(task.id, userData.id, 'gold_reward', 'increase')}
                             >+</button>
                         </div>
                     </div>
