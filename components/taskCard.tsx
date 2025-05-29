@@ -1,10 +1,13 @@
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 import { TaskCard } from "@/types/taskCard";
+import { useUserContext } from "@/context/UserContext";
 
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
 export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggleCompletion }: TaskCard ) => {
     const { id, name, silver_reward, gold_reward, is_completed, attribute, reward_given } = task;
+    const { userData, refreshUserData } = useUserContext();
+    if (!userData) return "Loading...";
 
     return (
         <div className={`font-mono border mt-3 ${is_completed && "opacity-40"}`}>
@@ -13,7 +16,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                     <button 
                         id="CompleteTaskButton"
                         className="border w-6 h-6 flex items-center justify-center hover:bg-emerald-900"
-                        onClick={() => onToggleCompletion( id, 1, silver_reward, gold_reward, is_completed, reward_given )}
+                        onClick={() => onToggleCompletion( id, 1, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData)}
                         >
                             {is_completed ? <FaCheck /> : ""} 
                         </button>

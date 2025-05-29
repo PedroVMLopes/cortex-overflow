@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnDB, giveTaskRewardOnDB } from "@/services/taskServices";
+import { deleteTask, fetchTasks, updateTaskRewardOnDB, updateCompletionOnDB, giveTaskRewardToUser } from "@/services/taskServices";
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
+import { useUserContext } from "@/context/UserContext";
+import { User } from "@/types/user";
 
 
 export function useTasks() {
     const [ tasks, setTasks ] = useState<Task[]>([]);
     const [ loading, setLoading ] = useState(true);
+    const { userData, refreshUserData } = useUserContext();
 
     useEffect(() => {
         async function loadTasks() {
@@ -30,12 +33,6 @@ export function useTasks() {
             throw err;
         }
     }
-
-
-    // Rewards the player when the task is completed for the first time
-    useEffect(() => {
-        
-    }, [tasks])
 
 
     // Delays the call to the database on reward update
@@ -74,8 +71,21 @@ export function useTasks() {
     }
 
 
-    async function giveTaskReward(id: number, userId: number, silver_reward: number, gold_reward: number) {
+    // Adds the task reward to the user when completed
+    // Is only called if the *wasRewardGiven* is false
+    async function giveTaskReward(
+        id: number, 
+        userId: number, 
+        silver_reward: number, 
+        gold_reward: number,
+        userData: User,
+        refreshUserData: () => void
+    ) {
+        const prevGoldAmount = userData?.gold_amount || 0;
+        const prevSilverAmount = userData?.silver_amount || 0;
         
+        await giveTaskRewardToUser(id, userId, (prevSilverAmount + silver_reward), (prevGoldAmount + gold_reward))
+        refreshUserData();
     }
 
 
@@ -85,18 +95,21 @@ export function useTasks() {
         silver_reward: number,
         gold_reward: number,
         completionStatus: boolean,
-        wasRewardGiven: boolean 
-    ) 
-    {
+        wasRewardGiven: boolean,
+        userData: User,
+        refreshUserData: () => void
+    ) {
         const task = tasks.find(t => t.id === id);
         if (!task) return
 
-        if (!wasRewardGiven) {giveTaskReward(id, userId, silver_reward, gold_reward)}
+        if (!wasRewardGiven) {
+            await giveTaskReward(id, userId, silver_reward, gold_reward, userData, refreshUserData);
+        }
 
         const newStatus = !completionStatus;
 
         try {
-            await updateCompletionOnDB(id, 1, newStatus, wasRewardGiven)
+            await updateCompletionOnDB(id, 1, newStatus, true)
         } catch (error) {
             console.error('Erro ao mudar o estado de finalização da tarefa: ', error);
             return;
@@ -104,7 +117,7 @@ export function useTasks() {
 
         setTasks(prev => 
             prev.map(t => 
-                t.id === id ? {...t, is_completed: newStatus} : t
+                t.id === id ? { ...t, is_completed: newStatus, reward_given: true } : t
             )
         )
     }

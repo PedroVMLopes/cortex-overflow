@@ -62,7 +62,10 @@ export async function updateTaskRewardOnDB(id: number, userId: number, rewardTyp
 export async function updateCompletionOnDB(id: number, userId: number, completionStatus: boolean, wasRewardGiven: boolean) {
     const { error } = await supabase
         .from('tasks')
-        .update({ is_completed: completionStatus })
+        .update({ 
+            is_completed: completionStatus,
+            reward_given: wasRewardGiven
+        })
         .eq('id', id);
 
     if( error ) {
@@ -71,10 +74,13 @@ export async function updateCompletionOnDB(id: number, userId: number, completio
     }
 }
 
-export async function giveTaskRewardOnDB(id: number, userId: number, silverReward: number, goldReward: number) {
+export async function giveTaskRewardToUser(id: number, userId: number, silverReward: number, goldReward: number) {
     const { error } = await supabase
         .from('users')
-        .update({ silver_amount: silverReward, gold_amount: goldReward })
+        .update({ 
+            silver_amount: silverReward, 
+            gold_amount: goldReward 
+        })
         .eq('id', userId);
 
     if( error ) {
