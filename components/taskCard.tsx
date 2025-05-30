@@ -12,7 +12,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
     return (
         <div className={`flex flex-col justify-between font-mono border border-emerald-700 ${is_completed && "opacity-40"}`}>
             <div className="flex flex-row items-start justify-between w-full">
-                <div className="flex flex-row gap-2 w-full max-w-11/12">
+                <div className="flex flex-row w-full max-w-11/12">
                     <button 
                         id="CompleteTaskButton"
                         className="border border-emerald-700 min-w-6 h-6 flex items-center justify-center hover:bg-emerald-900"
@@ -20,7 +20,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                         >
                             {is_completed ? <FaCheck /> : ""} 
                         </button>
-                    <p className="truncate overflow-hidden text-wrap w-full text-xl font-bold leading-5 pt-0.5">{ name }</p>
+                    <p className="truncate overflow-hidden text-wrap w-full text-xl font-bold leading-5 pt-0.5 ml-1">{ name }</p>
                 </div>
                 <button
                     id="DeleteTaskButton"
@@ -31,7 +31,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                 </button>
             </div>
 
-            <div className="flex flex-row mt-2 justify-between">
+            <div className="flex flex-row mt-3 justify-between">
                 {/* Attributes buttons */}
                 <div className="grid grid-cols-3 gap-1 text-sm text-gray-300">
                     {attributes.map(att => (
