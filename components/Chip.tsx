@@ -4,31 +4,22 @@ export default function ComputerChip() {
   return (
     <div className="relative">
       {/* Pins laterais */}
+
+      {/* Para adicionar pins laterais mude o valor dos arrays */}
       <div className="absolute -left-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(0)].map((_, i) => (
           <div key={i} className="w-3 h-1 bg-gray-400 border border-gray-500"></div>
         ))}
       </div>
       <div className="absolute -right-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(0)].map((_, i) => (
           <div key={i} className="w-3 h-1 bg-gray-400 border border-gray-500"></div>
         ))}
       </div>
-      
+
+
       {/* Corpo principal do chip */}
-      <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-600 shadow-xl relative overflow-hidden">
-        
-        {/* Circuitos decorativos */}
-        <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" viewBox="0 0 100 100">
-            <defs>
-              <pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M0,10 L10,10 L10,0 M10,20 L10,10 L20,10" stroke="#10b981" strokeWidth="0.5" fill="none"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#circuit)"/>
-          </svg>
-        </div>
+      <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-600 shadow-xl relative overflow-hidden">   
         
         {/* Header do chip */}
         <div className="relative bg-gradient-to-r from-emerald-950 to-emerald-900 p-3 border-b border-emerald-700">
