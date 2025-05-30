@@ -6,39 +6,39 @@ export default function ComputerChip() {
       {/* Pins laterais */}
 
       {/* Para adicionar pins laterais mude o valor dos arrays */}
-      <div className="absolute -left-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(0)].map((_, i) => (
-          <div key={i} className="w-3 h-1 bg-gray-400 border border-gray-500"></div>
+      <div className="absolute -left-1 top-3 bottom-3 flex flex-col justify-evenly">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="w-2 h-1 bg-yellow-700 border border-yellow-800"></div>
         ))}
       </div>
-      <div className="absolute -right-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(0)].map((_, i) => (
-          <div key={i} className="w-3 h-1 bg-gray-400 border border-gray-500"></div>
+      <div className="absolute -right-1 top-3 bottom-3 flex flex-col justify-evenly">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="w-2 h-1 bg-yellow-700 border border-yellow-800"></div>
         ))}
       </div>
 
 
       {/* Corpo principal do chip */}
-      <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-600 shadow-xl relative overflow-hidden">   
+      <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-700 shadow-xl relative overflow-hidden">   
         
         {/* Header do chip */}
         <div className="relative bg-gradient-to-r from-emerald-950 to-emerald-900 p-3 border-b border-emerald-700">
           <div className="flex flex-row text-sm items-center justify-evenly relative z-10">
             <p className="text-white font-mono font-bold tracking-wider">ATRIBUTO +</p>
           </div>
-          <p className="text-xs text-center text-emerald-200 font-mono">
+          <p className="text-xs text-center text-emerald-200 font-mono mt-1">
             Aumenta o XP da tarefa para 5
           </p>
           
           {/* LED indicator */}
-          <div className="absolute top-1 right-1 w-2 h-2 bg-red-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+          <div className="absolute top-1 right-1 w-2 h-2 bg-red-400 rounded-full shadow-lg shadow-green-400/50"></div>
         </div>
         
         {/* Slot de instalação */}
         <div className="relative bg-gradient-to-b from-gray-800 to-gray-900">
           <button className="w-full py-3 pt-2 bg-gradient-to-r from-emerald-900 to-emerald-800 hover:from-emerald-800 hover:to-emerald-700 text-xs flex flex-row items-center justify-center font-mono font-bold text-emerald-100 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border-t border-emerald-600/50">
             <span className="tracking-wider">IMPLANTAR: </span>
-            <FaGem className="mx-1 text-blue-400 text-base drop-shadow-md animate-pulse" />
+            <FaGem className="mx-1 text-blue-400 text-base drop-shadow-md" />
           </button>
           
           {/* Conectores na parte inferior */}
