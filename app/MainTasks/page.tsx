@@ -67,7 +67,7 @@ export default function MainTasks() {
                     onChange={(e) => setTaskName(e.target.value)}
                 />
                 <button 
-                    className="bg-emerald-950 p-1 px-2 w-fit text-nowrap animate-pulse"
+                    className="bg-emerald-950 p-1 px-2 w-fit text-nowrap"
                     onClick={handleCreateTask}
                 > 
                     + ADD

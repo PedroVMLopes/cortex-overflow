@@ -9,7 +9,7 @@ export const Navbar = () => {
     const { userData } = useUserContext();
 
     return (
-        <div className="fixed bottom-0 w-full font-mono bg-black text-emerald-500 z-10">
+        <div className="fixed bottom-0 w-full font-mono bg-black text-emerald-500 z-100">
             <div className="grid grid-cols-3 gap-0.5 items-center text-center border border-b-0 bg-emerald-950 border-emerald-900">
 
                 <div className="flex flex-col justify-center items-center py-1">

@@ -1,7 +1,6 @@
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 import { TaskCard } from "@/types/taskCard";
 import { useUserContext } from "@/context/UserContext";
-import { useEffect } from "react";
 
 const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];
 
@@ -29,9 +28,8 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
       </div>
 
       {/* LED Status Indicator */}
-      <div className="absolute top-0.5 left-2 flex space-x-1">
-        <div className={`w-2 h-2 rounded-full ${is_completed ? 'bg-green-400 animate-pulse shadow-lg shadow-green-400/50' : 'bg-red-400 animate-pulse shadow-lg shadow-red-400/50'}`}></div>
-        <div className={`w-2 h-2 rounded-full ${reward_given ? 'bg-green-400 animate-pulse shadow-lg shadow-green-400/50' : 'bg-red-400 animate-pulse shadow-lg shadow-red-400/50'}`}></div>
+      <div className="absolute bottom-1 right-2 flex space-x-1 opacity-40">
+        <div className={`w-2 h-2 rounded-full ${reward_given ? 'bg-green-400 shadow-lg shadow-green-400/50' : 'bg-red-400 shadow-lg shadow-red-400/50'}`}></div>
       </div>
 
       {/* Pins decorativos */}
@@ -41,14 +39,14 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
         ))}
       </div>
 
-      <div className="relative z-10 p-2 my-1.5">
+      <div className="relative z-10 p-1.5 pt-0 my-1.5">
         {/* Header Section */}
         <div className="flex flex-row items-start justify-between w-full mb-3">
           <div className="flex flex-row w-full max-w-11/12 items-start">
             {/* Complete Button - Styled as circuit switch */}
             <button 
               id="CompleteTaskButton"
-              className="relative border-2 border-emerald-600/70 min-w-6 h-6 flex items-center justify-center hover:bg-emerald-900/50 bg-gradient-to-br from-gray-800 to-gray-700 transition-all duration-300 hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30"
+              className="relative border-2 border-emerald-600/70 min-w-6 h-6 flex items-center justify-center hover:bg-emerald-900/50 transition-all duration-300 hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30"
               onClick={() => onToggleCompletion( id, userData.id, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData, xp_reward, attribute)}
             >
               {is_completed && <FaCheck className="w-4 h-4 text-green-400" />}
@@ -73,7 +71,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
         </div>
 
         <div className="flex flex-row justify-between items-end">
-          {/* Attributes Section - Styled as chip selectors */}
+          {/* Attributes Section */}
           <div className="flex flex-col bg-black">
             <div className="grid grid-cols-3 gap-1 text-sm">
               {attributes.map(att => (
@@ -92,7 +90,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
             </div>
           </div>
 
-          {/* Rewards Section - Styled as resource counters */}
+          {/* Rewards Section */}
           <div className="flex flex-col">
             
             {/* Silver Counter */}
@@ -155,8 +153,8 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
         ))}
       </div>
 
-      {/* Corner notch characteristic of ICs */}
-      <div className="absolute top-0 left-0 w-3 h-3 bg-gray-700 transform rotate-45 -translate-x-1/2 -translate-y-1/2"></div>
+      {/* Top corner notch */}
+      <div className="absolute top-0 left-0 w-3 h-3 transform rotate-45 -translate-x-1/2 -translate-y-1/2"></div>
     </div>
   );
 }
