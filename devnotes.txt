@@ -23,3 +23,15 @@ Fluxo de trabalho com o git
     
 
 > Fazer o merge no pull request após revisar o código
+
+
+> Atualizar a branch local
+    git checkout master
+    git pull origin master
+
+> Exlcuir a branch da feature (Opcional mas recomendado)
+    Local:
+    git branch -d feature/nome-da-feature
+
+    Remoto:
+    git push origin --delete feature/nome-da-feature
