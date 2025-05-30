@@ -18,11 +18,11 @@ export default function personalStats() {
             <div id="introductionBox" className="w-full flex flex-col border border-emerald-800 p-3">
                 <p className="text-xs opacity-80">SUBJECT NAME</p>
                 <div className="flex flex-row justify-between items-end">
-                    <h1 className="text-white">PEDRO</h1>
+                    <h1 className="">PEDRO</h1>
                     <p className="text-xs text-white flex flex-row"> <span className="opacity-60 mr-1">NÍVEL:</span> <span>0</span> </p>
                 </div>
             </div>
-            <h1 className="mt-3 pl-1 text-white">ATRIBUTOS</h1>
+            <h1 className="mt-3 pl-1 font-bold">ATRIBUTOS</h1>
             <div className="h-0.5 w-full bg-emerald-800 mb-2 mt-1"></div>
             <div id="attributeBoxes" className="grid grid-cols-2 gap-2">
                 {attributes.map(att => (
