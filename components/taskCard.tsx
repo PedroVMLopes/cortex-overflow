@@ -39,7 +39,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
         ))}
       </div>
 
-      <div className="relative z-10 p-1.5 pt-0 my-1.5">
+      <div className="relative z-10 px-1.5 my-1.5 mb-3.5 flex flex-col">
         {/* Header Section */}
         <div className="flex flex-row items-start justify-between w-full mb-3">
           <div className="flex flex-row w-full max-w-11/12 items-start">
@@ -94,7 +94,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
           <div className="flex flex-col">
             
             {/* Silver Counter */}
-            <div className="flex items-center gap-2 py-1 backdrop-blur-sm">
+            <div className="flex items-center gap-2 backdrop-blur-sm">
               <div className="flex items-center gap-1">
                 <div className="w-3 h-3 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 border border-gray-600 shadow-inner"></div>
                 <span className="text-xs text-gray-300 font-mono">Ag</span>
