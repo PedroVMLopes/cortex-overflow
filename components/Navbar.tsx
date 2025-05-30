@@ -15,21 +15,21 @@ export const Navbar = () => {
                 <div className="flex flex-col justify-center items-center py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-gray-400"/>
-                        <p>{userData?.silver_amount}</p>
+                        <p className="text-lg">{userData?.silver_amount}</p>
                     </div>
                 </div>
 
                 <div className="flex flex-col justify-center items-center border-r border-l border-emerald-900 py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-amber-300"/>
-                        <p>{userData?.gold_amount}</p>
+                        <p className="text-lg">{userData?.gold_amount}</p>
                     </div>
                 </div>
                     
                 <div className="flex flex-col justify-center items-center py-1">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiGems className="text-blue-400"/>
-                        <p>{userData?.gem_amount}</p>
+                        <p className="text-lg">{userData?.gem_amount}</p>
                     </div>
                 </div>
                     
