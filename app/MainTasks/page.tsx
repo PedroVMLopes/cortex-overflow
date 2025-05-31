@@ -56,7 +56,7 @@ export default function MainTasks() {
     })
 
     return (
-        <>
+        <div className="pb-16">
             <div
                 id="background"
                 className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat"
@@ -92,7 +92,7 @@ export default function MainTasks() {
                     />
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 
