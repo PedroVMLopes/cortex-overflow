@@ -20,11 +20,11 @@ export default function personalStats() {
                 style={{ backgroundImage: "url('/backgrounds/bg17.jpg')" }}
             />
             <div className="text-emerald-500 font-mono m-2">
-                <p className="text-xs backdrop-blur-2xl rounded-lg flex flex-row items-center mb-1 text-white"> <FaAngleRight /> Histórico de Sinapses_ </p>
+                <p className="text-sm backdrop-blur-2xl rounded-lg flex flex-row items-center mb-1 text-white"> <FaAngleRight /> Histórico de Sinapses_ </p>
                 <div id="introductionBox" className="w-full flex flex-col border border-emerald-800 bg-black/90 p-3">
                     <p className="text-xs opacity-80">SUBJECT NAME</p>
                     <div className="flex flex-row justify-between items-end">
-                        <h1 className="">PEDRO</h1>
+                        <h1 className="font-semibold">PEDRO</h1>
                         <p className="text-xs text-white flex flex-row"> <span className="opacity-60 mr-1">NÍVEL:</span> <span>0</span> </p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ export default function personalStats() {
                 <div id="attributeBoxes" className="grid grid-cols-2 gap-2">
                     {attributes.map(att => (
                         <div key={att.attShort} className={`border border-emerald-800 bg-black p-2`}>
-                            <div className="flex flex-row justify-between items-end text-xs text-white">
+                            <div className="flex flex-row justify-between items-end text-sm text-white">
                                 <p className="">{att.attLong}</p>
                                 <p className="text-base flex flex-row items-end"> <span className="text-xs pb-0.5 pr-0.5 opacity-60">lv</span> <span>0</span> </p>
                             </div>
