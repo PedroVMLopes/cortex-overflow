@@ -15,7 +15,7 @@ export default function Store() {
                 <p className="flex flex-row items-center mb-1 p-2"> <FaAngleRight className="text-emerald-500" /> Biotech Supermarket </p>
                 <FaMicrochip className="text-emerald-500" />
             </div>
-            <div className="text-emerald-50 font-mono">
+            <div className="text-emerald-50 font-mono m-2">
                 <CurrencyExchange />
                 <div className="h-10"></div>
                 <ChipStore />
