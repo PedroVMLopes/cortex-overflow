@@ -19,7 +19,7 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-400 text-2xl mr-1" /> 1 </p>
                             </div>
                         </div>
-                        <button className="bg-emerald-600 border-4 border-t-2 border-r-2 border-emerald-800 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow shadow-emerald-500 flex flex-row justify-center">
+                        <button className="bg-emerald-700 border-4 border-t-2 border-r-2 border-emerald-800 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow shadow-emerald-500 flex flex-row justify-center">
                             <p className="flex flex-row items-center text-emerald-50"> [EXEC] <GiCrownCoin className="text-gray-300 text-lg mx-1" /> 10 </p>
                         </button>
                     </div>
@@ -35,7 +35,7 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-row items-center text-white"> <FaGem className="text-cyan-400 mr-1" /> 1 </p>
                             </div>
                         </div>
-                        <button className="bg-emerald-600 border-4 border-t-2 border-r-2 border-emerald-800 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow shadow-emerald-500 flex flex-row justify-center">
+                        <button className="bg-emerald-700 border-4 border-t-2 border-r-2 border-emerald-800 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow shadow-emerald-500 flex flex-row justify-center">
                             <p className="flex flex-row items-center text-emerald-50"> [EXEC] <GiCrownCoin className="text-amber-300 text-lg mx-1" /> 1 </p>
                         </button>
                     </div>
