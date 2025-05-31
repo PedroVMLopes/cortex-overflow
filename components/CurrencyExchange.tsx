@@ -9,7 +9,7 @@ export default function CurrencyExchange() {
 
                 {/* Silver to gold exchange */}
                 <div className="flex flex-col items-center w-full mt-4 bg-black/80 backdrop-blur-2xl rounded">
-                    <div className="flex flex-row items-center justify-between w-full">
+                    <div className="flex flex-row items-center justify-evenly w-full">
                         <div className="p-2 px-4 flex flex-col items-center w-20">
                             <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-gray-300 text-2xl mr-1" /> 10 </p>
                             <p className="text-sm">PRATA</p>
@@ -27,7 +27,7 @@ export default function CurrencyExchange() {
 
                 {/* Gold to gem exchange */}
                 <div className="flex flex-col items-center w-full mt-6 bg-black/80 backdrop-blur-2xl rounded">
-                    <div className="flex flex-row items-center justify-between w-full">
+                    <div className="flex flex-row items-center justify-evenly w-full">
                         <div className="p-2 px-4 flex flex-col items-center w-20">
                             <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 5 </p>
                             <p className="text-sm">OURO</p>
