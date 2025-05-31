@@ -1,48 +1,46 @@
-import { FaAngleRight, FaGem } from "react-icons/fa";
+import { FaAngleRight, FaGem, FaCaretDown } from "react-icons/fa";
 import { GiCrownCoin } from "react-icons/gi";
 
 export default function CurrencyExchange() {
     return (
         <>
-            <div className="">
-                <p className="bg-emerald-950 p-1 text-center"> Transmutação de Moedas</p>
-                <p className="bg-emerald-950 px-1 pb-1 text-center text-xs text-emerald-500">STATUS: Online</p>
+            <div className="border border-emerald-500">
+                <p className="bg-emerald-600 text-black font-semibold p-1 text-center border-b border-emerald-500"> Transmutação de Moedas</p>
+                <div className="flex flex-row gap-2 p-2 bg-black/50">
 
-                {/* Silver to gold exchange */}
-                <div className="flex flex-col items-center w-full mt-4 bg-black/80 backdrop-blur-2xl rounded">
-                    <div className="flex flex-row items-center justify-evenly w-full">
-                        <div className="p-2 px-4 flex flex-col items-center w-20">
-                            <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-gray-300 text-2xl mr-1" /> 10 </p>
-                            <p className="text-sm">PRATA</p>
+                    {/* Silver to gold exchange */}
+                    <div className="flex flex-col items-center w-full bg-black/80 backdrop-blur-2xl border border-emerald-700">
+                        <div className="flex flex-col items-center justify-evenly w-full">
+                            <div className="p-2 px-4 flex flex-col items-center w-20">
+                                <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-gray-300 text-2xl mr-1" /> 10 </p>
+                            </div>
+                            <p className="text-emerald-500"> <FaCaretDown /> </p>
+                            <div className="p-2 px-4 flex flex-col items-center w-20">
+                                <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 1 </p>
+                            </div>
                         </div>
-                        <p className="text-emerald-50">===</p>
-                        <div className="p-2 px-4 flex flex-col items-center w-20">
-                            <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 1 </p>
-                            <p className="text-sm">OURO</p>
-                        </div>
+                        <button className="bg-emerald-900 border-4 border-y-2 border-emerald-950 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
+                            <p className="flex flex-row items-center text-emerald-50"> [EXEC] <GiCrownCoin className="text-gray-300 text-lg mx-1" /> 10 </p>
+                        </button>
                     </div>
-                    <button className="bg-gradient-to-tr from-black/70 to-yellow-500/50 w-[90%] cursor-pointer text-amber-300 py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
-                        <p className="flex flex-row items-center text-emerald-50"> EXECUTAR <GiCrownCoin className="text-gray-300 text-lg mx-1" /> 10 </p>
-                    </button>
-                </div>
 
-                {/* Gold to gem exchange */}
-                <div className="flex flex-col items-center w-full mt-6 bg-black/80 backdrop-blur-2xl rounded">
-                    <div className="flex flex-row items-center justify-evenly w-full">
-                        <div className="p-2 px-4 flex flex-col items-center w-20">
-                            <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 5 </p>
-                            <p className="text-sm">OURO</p>
+                    {/* Gold to gem exchange */}
+                    <div className="flex flex-col items-center w-full bg-black/80 backdrop-blur-2xl border border-emerald-700">
+                        <div className="flex flex-col items-center justify-evenly w-full">
+                            <div className="p-2 px-4 flex flex-col items-center w-20">
+                                <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 5 </p>
+                            </div>
+                            <p className="text-emerald-500"> <FaCaretDown /> </p>
+                            <div className="p-2 px-4 flex flex-col items-center w-20">
+                                <p className="flex flex-row items-center text-white"> <FaGem className="text-cyan-400 mr-1" /> 1 </p>
+                            </div>
                         </div>
-                        <p className="text-emerald-50">===</p>
-                        <div className="p-2 px-4 flex flex-col items-center w-20">
-                            <p className="flex flex-row items-center text-white"> <FaGem className="text-cyan-400 mr-1" /> 1 </p>
-                            <p className="text-sm">GEMA</p>
-                        </div>
+                        <button className="bg-emerald-900 border-4 border-y-2 border-emerald-950 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
+                            <p className="flex flex-row items-center text-emerald-50"> [EXEC] <GiCrownCoin className="text-amber-300 text-lg mx-1" /> 1 </p>
+                        </button>
                     </div>
-                    <button className="bg-gradient-to-tr from-black/70 to-blue-500/70 w-[90%] cursor-pointer text-amber-300 py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
-                        <p className="flex flex-row items-center text-emerald-50"> EXECUTAR <GiCrownCoin className="text-amber-300 text-lg mx-1" /> 1 </p>
-                    </button>
                 </div>
+                
             </div>
         </>
     )
