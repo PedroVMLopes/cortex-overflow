@@ -4,8 +4,8 @@ import { GiCrownCoin } from "react-icons/gi";
 export default function CurrencyExchange() {
     return (
         <>
-            <div className="border border-emerald-500">
-                <p className="bg-emerald-500 text-black font-semibold p-1 text-center"> Transmutação de Moedas</p>
+            <div className="border border-emerald-900">
+                <p className="bg-emerald-500 border-b border-emerald-900 text-black font-semibold p-1 text-center"> Transmutação de Moedas</p>
                 <div className="flex flex-row gap-2 p-2 bg-black/50">
 
                     {/* Silver to gold exchange */}
