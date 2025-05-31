@@ -5,7 +5,7 @@ export default function CurrencyExchange() {
     return (
         <>
             <div className="border border-emerald-500">
-                <p className="bg-emerald-600 text-black font-semibold p-1 text-center border-b border-emerald-500"> Transmutação de Moedas</p>
+                <p className="bg-emerald-500 text-black font-semibold p-1 text-center"> Transmutação de Moedas</p>
                 <div className="flex flex-row gap-2 p-2 bg-black/50">
 
                     {/* Silver to gold exchange */}
@@ -19,7 +19,7 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 1 </p>
                             </div>
                         </div>
-                        <button className="bg-emerald-900 border-4 border-y-2 border-emerald-950 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
+                        <button className="bg-emerald-800 border-4 border-y-2 border-emerald-950 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
                             <p className="flex flex-row items-center text-emerald-50"> [EXEC] <GiCrownCoin className="text-gray-300 text-lg mx-1" /> 10 </p>
                         </button>
                     </div>
@@ -35,7 +35,7 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-row items-center text-white"> <FaGem className="text-cyan-400 mr-1" /> 1 </p>
                             </div>
                         </div>
-                        <button className="bg-emerald-900 border-4 border-y-2 border-emerald-950 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
+                        <button className="bg-emerald-800 border-4 border-y-2 border-emerald-950 w-[90%] cursor-pointer py-0.5 mb-2 font-bold shadow-lg flex flex-row justify-center">
                             <p className="flex flex-row items-center text-emerald-50"> [EXEC] <GiCrownCoin className="text-amber-300 text-lg mx-1" /> 1 </p>
                         </button>
                     </div>
