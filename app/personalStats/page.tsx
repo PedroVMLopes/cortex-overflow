@@ -17,7 +17,7 @@ export default function personalStats() {
             <div
                 id="background"
                 className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: "url('/backgrounds/bg6.jpg')" }}
+                style={{ backgroundImage: "url('/backgrounds/bg17.jpg')" }}
             />
             <div className="text-emerald-500 font-mono m-2">
                 <p className="text-xs backdrop-blur-2xl rounded-lg flex flex-row items-center mb-1 text-white"> <FaAngleRight /> Histórico de Sinapses_ </p>

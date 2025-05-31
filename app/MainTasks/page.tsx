@@ -67,7 +67,7 @@ export default function MainTasks() {
                 <input 
                     type="text" 
                     placeholder="[ Crie uma nova missão ]"
-                    className="bg-black/80 w-full text-sm text-center sm:pl-1 sm:text-start"
+                    className="bg-black/80 w-full text-center sm:pl-1 sm:text-start"
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
                 />
