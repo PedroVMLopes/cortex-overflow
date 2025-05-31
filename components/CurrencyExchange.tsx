@@ -21,7 +21,9 @@ export default function CurrencyExchange() {
                         </div>
                     </div>
                 </div>
-                <button className="bg-black/80 w-full cursor-pointer text-emerald-50 rounded mt-0.5 font-bold shadow-lg"> <p>[ REALIZAR TROCA ]</p> </button>
+                <button className="backdrop-blur bg-black/70 w-full cursor-pointer text-amber-300 rounded mt-0.5 py-0.5 font-bold shadow-lg flex flex-row justify-center">
+                    [    <p className="text-emerald-50 mx-2"> REALIZAR TROCA </p>   ]
+                </button>
 
                 {/* Gold to gem exchange */}
                 <div className="flex flex-col items-center w-full mt-6 bg-gradient-to-r to-blue-600/70 backdrop-blur-2xl rounded">
@@ -37,7 +39,9 @@ export default function CurrencyExchange() {
                         </div>
                     </div>
                 </div>
-                <button className="bg-black/80 w-full cursor-pointer text-emerald-50 rounded mt-0.5 font-bold shadow-lg"> <p>[ REALIZAR TROCA ]</p> </button>
+                <button className="backdrop-blur bg-black/70 w-full cursor-pointer text-blue-400 rounded mt-0.5 py-0.5 font-bold shadow-lg flex flex-row justify-center">
+                    [ <p className="text-emerald-50 mx-2"> REALIZAR TROCA </p> ] 
+                </button>
             </div>
         </>
     )
