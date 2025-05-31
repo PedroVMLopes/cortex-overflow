@@ -10,7 +10,7 @@ export default function CurrencyExchange() {
                 <div className="flex flex-row gap-4 p-4 bg-black/80">
 
                     {/* Silver to gold exchange */}
-                    <div className="flex flex-col items-center w-full p-2 pt-0 bg-gradient-to-t from-black to-emerald-500/20 backdrop-blur-3xl border border-emerald-950">
+                    <div className="flex flex-col items-center w-full p-2 bg-black backdrop-blur-3xl border border-emerald-950">
                         <div className="flex flex-col items-center justify-evenly w-full">
                             <div className="p-1 px-4 flex flex-col items-center w-20">
                                 <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-gray-300 text-2xl mr-1" /> 10 </p>
@@ -20,13 +20,13 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-400 text-2xl mr-1" /> 1 </p>
                             </div>
                         </div>
-                        <Button className="w-full">
+                        <Button className="w-full mt-1">
                             <p className="flex flex-row items-center justify-center"> [EXEC] <GiCrownCoin className="text-gray-300 text-lg mx-1" /> 10 </p>
                         </Button>
                     </div>
 
                     {/* Gold to gem exchange */}
-                    <div className="flex flex-col items-center w-full p-2 pt-0 bg-gradient-to-t from-black to-emerald-500/20 backdrop-blur-3xl border border-emerald-950">
+                    <div className="flex flex-col items-center w-full p-2 bg-black backdrop-blur-3xl border border-emerald-950">
                         <div className="flex flex-col items-center justify-evenly w-full">
                             <div className="p-1 px-4 flex flex-col items-center w-20">
                                 <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 5 </p>
@@ -36,7 +36,7 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-row items-center text-white"> <FaGem className="text-cyan-400 mr-1" /> 1 </p>
                             </div>
                         </div>
-                        <Button className="w-full">
+                        <Button className="w-full mt-1">
                             <p className="flex flex-row items-center justify-center w-full"> [EXEC] <GiCrownCoin className="text-amber-300 text-lg mx-1" /> 1 </p>
                         </Button>
                     </div>
