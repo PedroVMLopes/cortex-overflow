@@ -10,7 +10,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
     if (!userData) return "Loading...";
 
     return (
-      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-xl`}>
+      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-3xl`}>
       
         {/* Circuitos de fundo */}
         <div className="absolute inset-0 opacity-10">
@@ -77,7 +77,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                 {attributes.map(att => (
                   <button 
                     key={att}
-                    className={`px-2 py-1 transition-all duration-200 font-mono text-xs tracking-wider font-bold
+                    className={`px-2 py-1 transition-all duration-200 font-mono tracking-wider font-bold
                       ${attribute === att 
                         ? "bg-gradient-to-bl from-emerald-700 to-emerald-400 text-black shadow-md shadow-emerald-500/30" 
                         : "bg-gradient-to-r text-emerald-500 hover:border-emerald-600/50 hover:bg-emerald-900/30"
@@ -94,23 +94,23 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
             <div className="flex flex-col">
               
               {/* Silver Counter */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-xl">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-inner"></div>
-                  <span className="text-xs text-emerald-50 font-mono">Ag</span>
+                  <span className="text-emerald-50 font-mono">Ag</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <button 
-                    className="w-5 h-5 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
+                    className="w-7 h-7 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
                     onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'decrease')}
                   >
                     -
                   </button>
-                  <span className="w-6 text-center text-xs text-emerald-100 font-mono bg-black/50 py-0.5 border border-emerald-600/70">
+                  <span className="w-7 h-7 text-center text-emerald-100 font-mono bg-black/50 py-0.5 border border-emerald-600/70 flex items-center justify-center">
                     {silver_reward}
                   </span>
                   <button 
-                    className="w-5 h-5 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
+                    className="w-7 h-7 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
                     onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'increase')}
                   >
                     +
@@ -119,23 +119,23 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
               </div>
 
               {/* Gold Counter */}
-              <div className="flex items-center gap-2 py-1">
+              <div className="flex items-center gap-2 py-1 text-xl">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-700 shadow-inner"></div>
-                  <span className="text-xs text-emerald-50 font-mono">Au</span>
+                  <span className="text-emerald-50 font-mono">Au</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <button 
-                    className="w-5 h-5 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
+                    className="w-7 h-7 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
                     onClick={() => onRewardUpdate(task.id, userData.id, 'gold_reward', 'decrease')}
                   >
                     -
                   </button>
-                  <span className="w-6 text-center text-xs text-emerald-100 font-mono bg-black/50 py-0.5 border border-emerald-600/70">
+                  <span className="w-7 h-7 text-center text-emerald-100 font-mono bg-black/50 py-0.5 border border-emerald-600/70 flex items-center justify-center">
                     {gold_reward}
                   </span>
                   <button 
-                    className="w-5 h-5 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
+                    className="w-7 h-7 bg-black/50 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
                     onClick={() => onRewardUpdate(task.id, userData.id, 'gold_reward', 'increase')}
                   >
                     +
