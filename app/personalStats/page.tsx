@@ -20,7 +20,7 @@ export default function personalStats() {
                 style={{ backgroundImage: "url('/backgrounds/bg6.jpg')" }}
             />
             <div className="text-emerald-500 font-mono m-2">
-                <p className="text-xs opacity-90 flex flex-row items-center mb-1 text-white"> <FaAngleRight /> Histórico de Sinapses_ </p>
+                <p className="text-xs backdrop-blur-2xl rounded-lg flex flex-row items-center mb-1 text-white"> <FaAngleRight /> Histórico de Sinapses_ </p>
                 <div id="introductionBox" className="w-full flex flex-col border border-emerald-800 bg-black/90 p-3">
                     <p className="text-xs opacity-80">SUBJECT NAME</p>
                     <div className="flex flex-row justify-between items-end">
