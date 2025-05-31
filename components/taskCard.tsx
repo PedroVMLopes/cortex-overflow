@@ -10,7 +10,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
     if (!userData) return "Loading...";
 
     return (
-      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-3xl bg-black/50`}>
+      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-3xl bg-black/50 ${is_completed ? 'bg-black opacity-70' : ''} `}>
       
         {/* Circuitos de fundo */}
         <div className="absolute inset-0 opacity-10">
@@ -46,14 +46,14 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
               {/* Complete Button - Styled as circuit switch */}
               <button 
                 id="CompleteTaskButton"
-                className="relative border-2 border-emerald-600/70 min-w-6 h-6 flex items-center justify-center hover:bg-emerald-900/50 transition-all duration-300 hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30"
+                className={`relative border-2 border-emerald-600/70 min-w-6 h-6 flex items-center justify-center hover:bg-emerald-900/50 transition-all duration-300 hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/30 ${is_completed && 'bg-emerald-600'}`}
                 onClick={() => onToggleCompletion( id, userData.id, silver_reward, gold_reward, is_completed, reward_given, userData, refreshUserData, xp_reward, attribute)}
               >
-                {is_completed && <FaCheck className="w-4 h-4 text-green-400" />}
+                {is_completed && <FaCheck className="w-4 h-4 text-black" />}
               </button>
               
               <div className="ml-1 flex-1">
-                <p className={`text-emerald-100 text-base leading-tight tracking-wide ${is_completed ? 'line-through text-emerald-500' : ''}`}>
+                <p className={`text-emerald-100 text-base leading-tight tracking-wide ${is_completed ? 'text-emerald-500' : ''}`}>
                   {name}
                 </p>
                 <div className="w-full h-px bg-gradient-to-r from-emerald-500/50 to-transparent mt-1"></div>
