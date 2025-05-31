@@ -6,12 +6,12 @@ export default function ComputerChip() {
 
       {/* Para adicionar pins laterais mude o valor dos arrays */}
       <div className="absolute -left-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(0)].map((_, i) => (
+        {[...Array(4)].map((_, i) => (
           <div key={i} className="w-3 h-1 bg-yellow-500 border border-yellow-700"></div>
         ))}
       </div>
       <div className="absolute -right-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(0)].map((_, i) => (
+        {[...Array(4)].map((_, i) => (
           <div key={i} className="w-3 h-1 bg-yellow-500 border border-yellow-700"></div>
         ))}
       </div>
