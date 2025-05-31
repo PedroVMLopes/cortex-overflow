@@ -10,6 +10,7 @@ export default function ChipStore() {
             <div className="grid grid-cols-2 mt-4 gap-7">
                 <Chip />
                 <Chip />
+                <Chip />
             </div>
         </div>
     )
