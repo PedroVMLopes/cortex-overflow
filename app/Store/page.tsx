@@ -1,6 +1,6 @@
 import ChipStore from "@/components/ChipStore";
 import CurrencyExchange from "@/components/CurrencyExchange";
-import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa";
 
 export default function Store() {
     return (
@@ -8,6 +8,7 @@ export default function Store() {
             <p className="text-xs opacity-70 flex flex-row items-center mb-1 text-white"> <FaAngleRight /> Biotech_Market </p>
             <div className="h-[2px] bg-emerald-800 w-full mb-2"></div>
             <CurrencyExchange />
+            <div className="h-10"></div>
             <ChipStore />
         </div>
     )

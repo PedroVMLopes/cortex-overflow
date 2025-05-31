@@ -13,7 +13,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
         <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden`}>
       
       {/* Circuitos de fundo */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" viewBox="0 0 200 100">
           <defs>
             <pattern id="pcb-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -147,8 +147,8 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
       </div>
 
       {/* Bottom connector pins */}
-      <div className="absolute bottom-0 left-1/4 right-1/4 flex justify-evenly opacity-30">
-        {[...Array(6)].map((_, i) => (
+      <div className="absolute bottom-0 left-1/4 right-1/4 flex justify-evenly opacity-10">
+        {[...Array(12)].map((_, i) => (
           <div key={i} className="w-1 h-2 bg-yellow-600 border-l border-r border-yellow-500"></div>
         ))}
       </div>

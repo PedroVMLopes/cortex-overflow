@@ -3,17 +3,16 @@ import { FaGem } from 'react-icons/fa';
 export default function ComputerChip() {
   return (
     <div className="relative">
-      {/* Pins laterais */}
 
       {/* Para adicionar pins laterais mude o valor dos arrays */}
-      <div className="absolute -left-1 top-3 bottom-3 flex flex-col justify-evenly">
+      <div className="absolute -left-2 top-3 bottom-3 flex flex-col justify-evenly">
         {[...Array(5)].map((_, i) => (
-          <div key={i} className="w-2 h-1 bg-stone-600 border border-stone-700"></div>
+          <div key={i} className="w-3 h-1 bg-stone-600 border border-stone-700"></div>
         ))}
       </div>
-      <div className="absolute -right-1 top-3 bottom-3 flex flex-col justify-evenly">
+      <div className="absolute -right-2 top-3 bottom-3 flex flex-col justify-evenly">
         {[...Array(5)].map((_, i) => (
-          <div key={i} className="w-2 h-1 bg-stone-600 border border-stone-700"></div>
+          <div key={i} className="w-3 h-1 bg-stone-600 border border-stone-700"></div>
         ))}
       </div>
 
@@ -37,7 +36,7 @@ export default function ComputerChip() {
         {/* Slot de instalação */}
         <div className="relative bg-gradient-to-b from-gray-800 to-gray-900">
           <button className="w-full py-3 pt-2 bg-gradient-to-r from-emerald-900 to-emerald-800 hover:from-emerald-800 hover:to-emerald-700 text-xs flex flex-row items-center justify-center font-mono font-bold text-emerald-100 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border-t border-emerald-600/50">
-            <span className="tracking-wider">IMPLANTAR: </span>
+            <span className="tracking-wider">IMPLANTAR: 2</span>
             <FaGem className="mx-1 text-blue-400 text-base drop-shadow-md" />
           </button>
           
