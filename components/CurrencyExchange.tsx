@@ -7,7 +7,7 @@ export default function CurrencyExchange() {
         <>
             <div className="">
                 <p className="bg-emerald-950 border-b text-emerald-500 font-bold p-1 text-center"> Transmutação_de_Moedas</p>
-                <div className="flex flex-row gap-4 p-4 bg-black/80">
+                <div className="flex flex-row gap-4 p-4 backdrop-blur bg-black/80">
 
                     {/* Silver to gold exchange */}
                     <div className="flex flex-col items-center w-full p-2 bg-black backdrop-blur-3xl border border-emerald-950">
