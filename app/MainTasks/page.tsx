@@ -57,12 +57,17 @@ export default function MainTasks() {
 
     return (
         <>
+            <div
+                id="background"
+                className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: "url('/backgrounds/bg4.jpg')" }}
+            />
             {/* Input to add a new task */}
             <div className="flex justify-between border border-emerald-800">
                 <input 
                     type="text" 
                     placeholder="[ Crie uma nova missão ]"
-                    className="bg-black pl-1 w-full text-sm"
+                    className="bg-black/80 w-full text-sm text-center sm:pl-1 sm:text-start"
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
                 />
