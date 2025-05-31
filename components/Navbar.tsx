@@ -34,7 +34,7 @@ export const Navbar = () => {
                 </div>
                     
             </div>
-            <div className="grid grid-cols-4 grid-rows-1 items-center text-center text-2xl border bg-black border-emerald-900 py-2 text-emerald-300">
+            <div className="grid grid-cols-4 grid-rows-1 items-center text-center text-3xl border bg-black border-emerald-900 py-2 text-emerald-300">
                 <div className="flex justify-center">
                     <Link href="/"><GiSixEyes /></Link>
                 </div>
