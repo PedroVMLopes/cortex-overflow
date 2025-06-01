@@ -92,31 +92,6 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
 
             {/* Rewards Section */}
             <div className="flex flex-col">
-              
-              {/* Silver Counter */}
-              <div className="flex items-center gap-2 text-xl">
-                <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-inner"></div>
-                  <span className="text-emerald-50 font-mono">Ag</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <button 
-                    className="w-7 h-7 bg-black/70 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
-                    onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'decrease')}
-                  >
-                    -
-                  </button>
-                  <span className="w-7 h-7 text-center text-emerald-100 font-mono bg-black/70 py-0.5 border border-emerald-600/70 flex items-center justify-center">
-                    {silver_reward}
-                  </span>
-                  <button 
-                    className="w-7 h-7 bg-black/70 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
-                    onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'increase')}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
 
               {/* Gold Counter */}
               <div className="flex items-center gap-2 py-1 text-xl">
@@ -142,6 +117,32 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
                   </button>
                 </div>
               </div>
+              
+              {/* Silver Counter */}
+              <div className="flex items-center gap-2 text-xl">
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-inner"></div>
+                  <span className="text-emerald-50 font-mono">Ag</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <button 
+                    className="w-7 h-7 bg-black/70 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
+                    onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'decrease')}
+                  >
+                    -
+                  </button>
+                  <span className="w-7 h-7 text-center text-emerald-100 font-mono bg-black/70 py-0.5 border border-emerald-600/70 flex items-center justify-center">
+                    {silver_reward}
+                  </span>
+                  <button 
+                    className="w-7 h-7 bg-black/70 border border-emerald-600/70 hover:from-emerald-800 hover:to-emerald-700 flex items-center justify-center transition-all duration-200 hover:shadow-md"
+                    onClick={() => onRewardUpdate(task.id, userData.id, 'silver_reward', 'increase')}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              
             </div>
           </div>
         </div>

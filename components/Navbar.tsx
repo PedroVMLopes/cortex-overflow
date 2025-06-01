@@ -1,6 +1,6 @@
 "use client"
 
-import { GiCrownCoin, GiGems, GiSixEyes, GiMaceHead, GiBrickPile, GiBrainTentacle } from "react-icons/gi";
+import { GiCrownCoin, GiGems, GiSixEyes, GiMaceHead, GiBrickPile, GiBrainTentacle, GiCrownOfThorns } from "react-icons/gi";
 import Link from "next/link";
 import { useUserContext } from "../context/UserContext";
 
@@ -34,9 +34,12 @@ export const Navbar = () => {
                 </div>
                     
             </div>
-            <div className="grid grid-cols-4 grid-rows-1 items-center text-center text-3xl border bg-black border-emerald-900 py-2 text-emerald-300">
+            <div className="grid grid-cols-5 grid-rows-1 items-center text-center text-3xl border bg-black border-emerald-900 py-2 text-emerald-300">
                 <div className="flex justify-center">
                     <Link href="/"><GiSixEyes /></Link>
+                </div>
+                <div className="flex justify-center">
+                    <Link href="/DailyTasks"><GiCrownOfThorns /></Link>
                 </div>
                 <div className="flex justify-center">
                     <Link href="/LegacyObjectives"><GiMaceHead /></Link>

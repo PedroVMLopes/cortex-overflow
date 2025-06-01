@@ -19,6 +19,9 @@ export default function ChipStore() {
                 <Chip />
                 <Chip />
             </div>
+            <div>
+                <p className="text-xs px-4 mt-6">Missões aprimoradas com chips dão <span className="text-emerald-200">01 circuitos</span> como recompensa.</p>
+            </div>
         </div>
     )
 }
