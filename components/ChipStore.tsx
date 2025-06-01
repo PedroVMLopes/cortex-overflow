@@ -15,7 +15,7 @@ export default function ChipStore() {
                     <option value={'tarefa 2'}> Tarefa 2 </option>
                 </select>
             </div>
-            <div className="grid grid-cols-2 mt-4 px-2 gap-7">
+            <div className="grid grid-cols-2 mt-4 px-4 gap-7">
                 <Chip />
                 <Chip />
             </div>
