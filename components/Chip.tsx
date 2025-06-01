@@ -2,7 +2,7 @@ import { FaGem } from 'react-icons/fa';
 
 export default function ComputerChip() {
   return (
-    <div className="relative">
+    <div className="relative py-2">
 
       {/* Para adicionar pins laterais mude o valor dos arrays */}
       <div className="absolute -left-2 top-3 bottom-3 flex flex-col justify-evenly">
@@ -54,7 +54,7 @@ export default function ComputerChip() {
       </div>
       
       {/* Sombra do chip */}
-      <div className="absolute inset-0 bg-black/30 transform translate-x-1 translate-y-1 -z-10 border-2 border-transparent"></div>
+      <div className="absolute inset-0 bg-black/30 transform translate-x-1 translate-y-3 h-34 -z-10 border-2 border-transparent"></div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
     if (!userData) return "Loading...";
 
     return (
-      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-3xl bg-black/50 ${is_completed ? 'bg-black opacity-70' : ''} `}>
+      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-3xl bg-black/80 ${is_completed ? 'bg-black opacity-70' : ''} `}>
       
         {/* Circuitos de fundo */}
         <div className="absolute inset-0 opacity-10">
@@ -97,7 +97,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
               <div className="flex items-center gap-2 py-1 text-xl">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-700 shadow-inner"></div>
-                  <span className="text-emerald-50 font-mono">Au</span>
+                  <span className="text-emerald-400 font-mono">Au</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <button 
@@ -122,7 +122,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
               <div className="flex items-center gap-2 text-xl">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-inner"></div>
-                  <span className="text-emerald-50 font-mono">Ag</span>
+                  <span className="text-emerald-400 font-mono">Ag</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <button 

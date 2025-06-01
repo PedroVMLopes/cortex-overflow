@@ -5,6 +5,7 @@ import { useState } from "react";
 import { TaskCardComponent } from "../../components/taskCard";
 import { useTasks } from "@/hooks/useTasks";
 import { createTask } from "@/services/taskServices";
+import { FaAngleRight } from "react-icons/fa";
 
 export default function MainTasks() {
 
@@ -62,25 +63,32 @@ export default function MainTasks() {
                 className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: "url('/backgrounds/bg4.jpg')" }}
             />
-            {/* Input to add a new task */}
-            <div className="flex justify-between border border-emerald-800">
-                <input 
-                    type="text" 
-                    placeholder="[ Crie uma nova missão ]"
-                    className="bg-black/80 w-full text-center sm:pl-1 sm:text-start"
-                    value={taskName}
-                    onChange={(e) => setTaskName(e.target.value)}
-                />
-                <button 
-                    className="bg-emerald-950 p-1 px-2 w-fit text-nowrap"
-                    onClick={handleCreateTask}
-                > 
-                    + ADD
-                </button>
+
+            <div className="fixed top-0 left-0 w-full px-2 z-10 backdrop-blur">
+                <p className="font-bold">BEM VINDO, PEDRO!</p>
+                <p className="text-xs opacity-90 flex flex-row items-center text-emerald-50"> <FaAngleRight /> Cortex Overflow Mk.2</p>
+                <div className="h-0.5 w-full bg-emerald-800 my-2"></div>
+
+                {/* Input to add a new task */}
+                <div className="flex justify-between border border-emerald-800">
+                    <input 
+                        type="text" 
+                        placeholder="[ Crie uma nova missão ]"
+                        className="bg-black/80 w-full sm:pl-1"
+                        value={taskName}
+                        onChange={(e) => setTaskName(e.target.value)}
+                    />
+                    <button 
+                        className="bg-emerald-950 p-1 px-2 w-fit text-nowrap"
+                        onClick={handleCreateTask}
+                    > 
+                        + ADD
+                    </button>
+                </div>
             </div>
 
             {/* TaskCard list render */}
-            <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="mt-30 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {orderTasks.map( ( task ) => (
                     <TaskCardComponent 
                         key={task.id} 
