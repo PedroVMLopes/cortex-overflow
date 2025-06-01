@@ -5,12 +5,12 @@ import Button from "./KeyboardButton";
 export default function CurrencyExchange() {
     return (
         <>
-            <div className="">
-                <p className="bg-emerald-950 border-b text-emerald-500 font-bold p-1 text-center"> Transmutação_de_Moedas</p>
-                <div className="flex flex-row gap-4 p-4 backdrop-blur bg-black/80">
+            <div className="border border-emerald-800">
+                <p className="bg-emerald-950 text-emerald-200 font-bold p-1 text-center"> Transmutação_de_Moedas</p>
+                <div className="flex flex-row gap-4 p-4 backdrop-blur">
 
                     {/* Silver to gold exchange */}
-                    <div className="flex flex-col items-center w-full p-2 bg-black backdrop-blur-3xl border border-emerald-950">
+                    <div className="flex flex-col items-center w-full p-2 backdrop-blur-2xl bg-black/70 border border-emerald-950">
                         <div className="flex flex-col items-center justify-evenly w-full">
                             <div className="p-1 px-4 flex flex-col items-center w-20">
                                 <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-gray-300 text-2xl mr-1" /> 10 </p>
@@ -26,7 +26,7 @@ export default function CurrencyExchange() {
                     </div>
 
                     {/* Gold to gem exchange */}
-                    <div className="flex flex-col items-center w-full p-2 bg-black backdrop-blur-3xl border border-emerald-950">
+                    <div className="flex flex-col items-center w-full p-2 backdrop-blur-2xl bg-black/70 border border-emerald-950">
                         <div className="flex flex-col items-center justify-evenly w-full">
                             <div className="p-1 px-4 flex flex-col items-center w-20">
                                 <p className="flex flex-row items-center text-white"> <GiCrownCoin className="text-amber-300 text-2xl mr-1" /> 5 </p>
