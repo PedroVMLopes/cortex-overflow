@@ -10,7 +10,7 @@ export default function ChipStore() {
                 <p className="text-sm opacity-80 text-white">Use seu esforço para enganar seu cérebro a completar tarefas difíceis</p>
             </div>
             <div className="mt-2 px-2 w-full">
-                <select className="backdrop-blur-2xl bg-black/70 border border-emerald-900 text-emerald-200 w-full mt-2 py-1 px-4 font-mono">
+                <select className="backdrop-blur-2xl bg-black/80 border border-emerald-900 text-emerald-200 w-full mt-2 py-1 px-4 font-mono">
                     <option value={'default'}> Selecione a missão </option>
                     <option value={'tarefa 2'}> Tarefa 2 </option>
                 </select>

@@ -1,12 +1,12 @@
-import { FaAngleRight, FaGem, FaCaretDown } from "react-icons/fa";
-import { GiCrownCoin } from "react-icons/gi";
+import { FaGem, FaCaretDown } from "react-icons/fa";
+import { GiCrownCoin, GiGems } from "react-icons/gi";
 import Button from "./KeyboardButton";
 
 export default function CurrencyExchange() {
     return (
         <>
             <div className="border border-emerald-800">
-                <p className="bg-emerald-950 text-emerald-200 font-bold p-1 text-center"> Transmutação_de_Moedas</p>
+                <p className="backdrop-blur-2xl bg-black/70 text-emerald-200 font-bold p-1 text-center"> Transmutação_de_Moedas</p>
                 <div className="flex flex-row gap-4 p-4 backdrop-blur">
 
                     {/* Silver to gold exchange */}
