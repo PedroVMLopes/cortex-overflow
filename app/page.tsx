@@ -5,9 +5,9 @@ export default function Home() {
 
   return (
     <div className="font-mono text-emerald-500 m-2">
-        
 
         <MainTasks />
+        
     </div>
   );
 }
