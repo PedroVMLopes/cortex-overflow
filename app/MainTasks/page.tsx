@@ -69,7 +69,7 @@ export default function MainTasks() {
             />
 
             <div className="fixed top-0 left-0 w-full p-2 z-10 backdrop-blur text-emerald-500 font-mono">
-                <p className="font-bold">Welcome back, {userData?.name.toUpperCase()}!</p>
+                <p className="font-bold">Welcome, {userData?.name.toUpperCase()}!</p>
                 <p className="text-xs opacity-90 flex flex-row items-center text-emerald-50"> <FaAngleRight /> Cortex Overflow Mk.2</p>
                 <div className="h-0.5 w-full bg-emerald-800 my-2"></div>
 
