@@ -16,7 +16,7 @@ export async function fetchTasks(): Promise<Task[]> {
     return data || [];
 }
 
-export async function createTask(name: string, userId: number): Promise<Task> {
+export async function createTask(name: string, userId: number | undefined): Promise<Task> {
     const { data, error } = await supabase
         .from('tasks')
         .insert({

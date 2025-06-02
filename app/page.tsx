@@ -4,24 +4,23 @@ import { useEffect, useState } from "react";
 import Auth from "@/components/Auth";
 import { FaAngleRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { useAppUser } from "@/hooks/useAppUsers";
+import { fetchCurrentUser } from "@/services/userServices"; 
+import { useUserContext } from "@/context/UserContext";
 
 export default function Home() {
-  const [ loading, setLoading ] = useState(true);
-  const user = useAppUser();
+  const user = fetchCurrentUser();
   const router = useRouter();
+  const { userData } = useUserContext();
 
   useEffect(() => {
     const checkUser = async () => {
-      if (user) {
+      if (await user) {
         router.push('/MainTasks')
       }
-      setLoading(false);
     }
     checkUser();
+    
   }, [user])
-
-  if (loading) return <p>Loading...</p>
 
   return (
     <div className="font-mono text-emerald-500 m-2">
@@ -33,7 +32,7 @@ export default function Home() {
       </div>
 
       <div className="h-[90vh] flex flex-col items-center justify-center">
-        {user === null && <Auth />}
+        {!userData && <Auth />}
       </div>
 
     </div>

@@ -5,7 +5,7 @@ export async function fetchCurrentUser(): Promise<AppUser | null> {
     let userData: AppUser;
     const { data: { user: authUser }, error } = await supabase.auth.getUser();
     
-    if (error || !authUser) return null;
+    if (!authUser) return null;
 
     const { data, error: userError } = await supabase
         .from('users')

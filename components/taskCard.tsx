@@ -10,7 +10,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
     if (!userData) return "Loading...";
 
     return (
-      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-3xl bg-black/80 ${is_completed ? 'bg-black opacity-70' : ''} `}>
+      <div className={`relative border border-emerald-500/50 font-mono shadow-xl overflow-hidden backdrop-blur-3xl bg-black/80 text-emerald-500 ${is_completed ? 'bg-black opacity-70' : ''} `}>
       
         {/* Circuitos de fundo */}
         <div className="absolute inset-0 opacity-10">
