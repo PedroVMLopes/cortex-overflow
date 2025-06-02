@@ -1,9 +1,10 @@
 'use client'
+
 import { useEffect, useState } from "react";
 import Auth from "@/components/Auth";
 import { FaAngleRight } from "react-icons/fa";
-import { useAppUser } from "@/hooks/useAppUsers";
 import { useRouter } from "next/navigation";
+import { useAppUser } from "@/hooks/useAppUsers";
 
 export default function Home() {
   const [ loading, setLoading ] = useState(true);
@@ -18,7 +19,7 @@ export default function Home() {
       setLoading(false);
     }
     checkUser();
-  }, [])
+  }, [user])
 
   if (loading) return <p>Loading...</p>
 
@@ -32,7 +33,7 @@ export default function Home() {
       </div>
 
       <div className="h-[90vh] flex flex-col items-center justify-center">
-        <Auth />
+        {user === null && <Auth />}
       </div>
 
     </div>

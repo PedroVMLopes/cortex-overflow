@@ -12,7 +12,7 @@ import {
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 import { useUserContext } from "@/context/UserContext";
-import { User } from "@/types/AppUser";
+import { AppUser } from "@/types/AppUser";
 
 
 export function useTasks() {
@@ -87,7 +87,7 @@ export function useTasks() {
         userId: number, 
         silver_reward: number, 
         gold_reward: number,
-        userData: User,
+        userData: AppUser,
         refreshUserData: () => void
     ) {
         const prevGoldAmount = userData?.gold_amount || 0;
@@ -138,7 +138,7 @@ export function useTasks() {
         gold_reward: number,
         completionStatus: boolean,
         wasRewardGiven: boolean,
-        userData: User,
+        userData: AppUser,
         refreshUserData: () => void,
         xpReward: number,
         attribute?: string
