@@ -1,5 +1,5 @@
 import { Task } from "./task";
-import { User } from "./AppUser";
+import { AppUser } from "./AppUser";
 
 export interface TaskCard {
     task: Task;
@@ -12,7 +12,7 @@ export interface TaskCard {
         gold_reward: number, 
         completionStatus: boolean, 
         wasRewardGiven: boolean,
-        userData: User,
+        userData: AppUser,
         refreshUserData: () => void,
         xpReward: number,
         attribute?: string

@@ -13,13 +13,10 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const [ userData, setUserData ] = useState<AppUser | null>(null);
-    const [ isLoading, setIsLoading] = useState(true);
 
     const refreshUserData = async () => {
-        setIsLoading(true);
         const user = await fetchCurrentUser();
         setUserData(user);
-        setIsLoading(false)
     }
 
     useEffect(() => {

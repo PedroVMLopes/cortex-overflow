@@ -35,7 +35,7 @@ export function useTasks() {
     // Calls the function that removes the task in the DB then remove the taks locally
     async function removeTaskById(id: number, userId: number) {
         try {
-            await deleteTask(id, 1);
+            await deleteTask(id, userId);
             setTasks(prev => prev.filter(task => task.id !== id));
         } catch (err) {
             console.error("Erro ao deletar a task: ", err);
@@ -51,7 +51,7 @@ export function useTasks() {
         rewardType: 'silver_reward' | 'gold_reward',
         newValue: number
     ) => {
-        updateTaskRewardOnDB(id, 1, rewardType, newValue);
+        updateTaskRewardOnDB(id, userId, rewardType, newValue);
     }, 2000);
 
     async function updateTaskReward(id: number, userId: number, rewardType: 'silver_reward' | 'gold_reward', operation: 'increase' | 'decrease') {
@@ -154,7 +154,7 @@ export function useTasks() {
         const newStatus = !completionStatus;
 
         try {
-            await updateCompletionOnDB(id, 1, newStatus, true)
+            await updateCompletionOnDB(id, userId, newStatus, true)
         } catch (error) {
             console.error('Erro ao mudar o estado de finalização da tarefa: ', error);
             return;
