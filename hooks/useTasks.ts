@@ -12,7 +12,7 @@ import {
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 import { useUserContext } from "@/context/UserContext";
-import { User } from "@/types/user";
+import { User } from "@/types/AppUser";
 
 
 export function useTasks() {

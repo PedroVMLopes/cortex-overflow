@@ -18,7 +18,8 @@ export default function Auth() {
         <div className='flex justify-center mt-10'>
             <Button 
                 onClick={() => handleGoogleLogin}
-                > Entrar com Google <FaGoogle /> </Button>
+                className='gap-2 shadow-2xl'
+                > [ connect ] <FaGoogle /> </Button>
         </div>
     )
 

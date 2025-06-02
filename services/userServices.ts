@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import { User } from "@/types/user";
+import { User } from "@/types/AppUser";
 
 export async function fetchCurrentUser(): Promise<User | null> {
     const { data, error } = await supabase

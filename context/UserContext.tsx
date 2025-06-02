@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { User } from "@/types/user";
+import { User } from "@/types/AppUser";
 import { fetchCurrentUser } from "@/services/userServices";
 
 interface UserContextType {

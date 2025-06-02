@@ -1,5 +1,5 @@
 import { Task } from "./task";
-import { User } from "./user";
+import { User } from "./AppUser";
 
 export interface TaskCard {
     task: Task;
