@@ -7,6 +7,7 @@ import { useTasks } from "@/hooks/useTasks";
 import { createTask } from "@/services/taskServices";
 import { FaAngleRight } from "react-icons/fa";
 import { useUserContext } from "@/context/UserContext";
+import Auth from "@/components/Auth";
 
 
 export default function MainTasks() {
@@ -91,7 +92,8 @@ export default function MainTasks() {
                 </div>
             </div>
 
-            
+            {/* Adds the auth button if the user is not connected */}
+            { !userData && <div className="h-[90vh] flex items-center justify-center"><div className="p-12 border border-emerald-500 backdrop-blur-2xl"><Auth /></div></div> }
 
             {/* TaskCard list render */}
             <div className="mt-30 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mx-2">
