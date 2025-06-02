@@ -1,4 +1,7 @@
+'use client'
 import { FaAngleRight } from "react-icons/fa";
+import { useUserContext } from "@/context/UserContext";
+import Auth from "@/components/Auth";
 
 type Attribute = { attShort: string, attLong: string, color: string }
 
@@ -12,6 +15,8 @@ const attributes: Attribute[] = [
 ];
 
 export default function personalStats() {
+    const { userData } = useUserContext();
+    
     return (
         <>
             <div
@@ -47,6 +52,8 @@ export default function personalStats() {
                         </div>
                     ))}
                 </div>
+            {/* Adds the auth button if the user is not connected */}
+            { !userData && <div className="h-[50vh] flex items-center justify-center"><div className="p-12 border border-emerald-500 backdrop-blur-2xl"><Auth /></div></div> }
             </div>
         </>
     )

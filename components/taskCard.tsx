@@ -64,7 +64,7 @@ export const TaskCardComponent = ( { task, onTaskRemove, onRewardUpdate, onToggl
             <button
               id="DeleteTaskButton"
               className="w-4 h-4 flex items-center justify-center transition-all duration-300 text-red-400 hover:text-red-500"
-              onClick={() => onTaskRemove(id, 1)}
+              onClick={() => onTaskRemove(id, userData.id)}
             >
               <FaRegTrashAlt className="w-4 h-4"/>
             </button>

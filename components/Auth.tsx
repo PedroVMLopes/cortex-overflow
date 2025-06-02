@@ -19,7 +19,7 @@ export default function Auth() {
             <Button 
                 onClick={handleGoogleLogin}
                 className='gap-2'
-                > [ connect ] <FaGoogle /> </Button>
+                > [ Log In ] <FaGoogle /> </Button>
         </div>
     )
 

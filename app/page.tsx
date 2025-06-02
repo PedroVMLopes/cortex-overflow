@@ -24,15 +24,20 @@ export default function Home() {
 
   return (
     <div className="font-mono text-emerald-500 m-2">
+      <div
+                id="background"
+                className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat opacity-30"
+                style={{ backgroundImage: "url('/backgrounds/bg4.jpg')" }}
+            />
       {/* Top Content */}
-      <div className="fixed top-0 left-0 w-full px-2 z-10 backdrop-blur">
+      <div className="fixed top-0 left-0 w-full p-2 z-10 backdrop-blur">
         <p className="font-bold">BEM VINDO, USUÁRIO!</p>
         <p className="text-xs opacity-90 flex flex-row items-center text-emerald-50"> <FaAngleRight /> Cortex Overflow Mk.2</p>
         <div className="h-0.5 w-full bg-emerald-800 my-2"></div>
       </div>
 
       <div className="h-[90vh] flex flex-col items-center justify-center">
-        {!userData && <Auth />}
+        { !userData && <div className="h-[90vh] flex items-center justify-center"><div className="p-12 border border-emerald-500 backdrop-blur-2xl"><Auth /></div></div> }
       </div>
 
     </div>
