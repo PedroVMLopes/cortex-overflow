@@ -1,18 +1,18 @@
 "use client"
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { User } from "@/types/user";
+import { AppUser } from "@/types/AppUser";
 import { fetchCurrentUser } from "@/services/userServices";
 
 interface UserContextType {
-    userData: User | null;
+    userData: AppUser | null;
     refreshUserData: () => Promise<void>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-    const [ userData, setUserData ] = useState<User | null>(null);
+    const [ userData, setUserData ] = useState<AppUser | null>(null);
 
     const refreshUserData = async () => {
         const user = await fetchCurrentUser();

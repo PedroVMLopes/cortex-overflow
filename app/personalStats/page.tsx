@@ -1,4 +1,8 @@
+'use client'
 import { FaAngleRight } from "react-icons/fa";
+import { useUserContext } from "@/context/UserContext";
+import Auth from "@/components/Auth";
+import LogoutButton from "@/components/LogoutButton";
 
 type Attribute = { attShort: string, attLong: string, color: string }
 
@@ -12,6 +16,8 @@ const attributes: Attribute[] = [
 ];
 
 export default function personalStats() {
+    const { userData } = useUserContext();
+    
     return (
         <>
             <div
@@ -20,6 +26,7 @@ export default function personalStats() {
                 style={{ backgroundImage: "url('/backgrounds/bg17.jpg')" }}
             />
             <div className="text-emerald-500 font-mono m-2">
+                {/* Top Info Box */}
                 <p className="text-sm backdrop-blur-2xl rounded-lg flex flex-row items-center mb-1 text-white"> <FaAngleRight /> Histórico de Sinapses_ </p>
                 <div id="introductionBox" className="w-full flex flex-col border border-emerald-800 bg-black/90 p-3">
                     <p className="text-xs opacity-80">SUBJECT NAME</p>
@@ -28,6 +35,8 @@ export default function personalStats() {
                         <p className="text-xs text-white flex flex-row"> <span className="opacity-60 mr-1">NÍVEL:</span> <span>0</span> </p>
                     </div>
                 </div>
+
+                {/* Attribute boxes */}
                 <h1 className="mt-3 pl-1 font-bold">ATRIBUTOS</h1>
                 <div className="h-0.5 w-full bg-emerald-800 mb-2 mt-1"></div>
                 <div id="attributeBoxes" className="grid grid-cols-2 gap-2">
@@ -46,6 +55,11 @@ export default function personalStats() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                <div className="w-full flex justify-end mt-2 gap-2">
+                    {/* Adds the auth button if the user is not connected */}
+                    { userData ? <LogoutButton /> : <Auth /> }
                 </div>
             </div>
         </>

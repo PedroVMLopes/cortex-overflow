@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "../components/Navbar";
 import { UserProvider } from "../context/UserContext";
+import { SupabaseAuthClient } from "@supabase/supabase-js/dist/module/lib/SupabaseAuthClient";
+import { supabase } from "@/lib/supabase";
+import { access } from "fs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

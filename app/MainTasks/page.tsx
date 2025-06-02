@@ -6,6 +6,8 @@ import { TaskCardComponent } from "../../components/taskCard";
 import { useTasks } from "@/hooks/useTasks";
 import { createTask } from "@/services/taskServices";
 import { FaAngleRight } from "react-icons/fa";
+import { useUserContext } from "@/context/UserContext";
+
 
 export default function MainTasks() {
 
@@ -14,11 +16,13 @@ export default function MainTasks() {
     const now = new Date().getTime();
     const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
+    const { userData } = useUserContext();
+
     const handleCreateTask = async () => {
         if (!taskName.trim()) return;
 
         try {
-            const newTask = await createTask(taskName, 1); // 1 = ID fixo
+            const newTask = await createTask(taskName, userData?.id);
             setTasks(prev => [...prev, newTask]);
             setTaskName('');
         } catch (error) {
@@ -64,7 +68,7 @@ export default function MainTasks() {
                 style={{ backgroundImage: "url('/backgrounds/bg4.jpg')" }}
             />
 
-            <div className="fixed top-0 left-0 w-full px-2 z-10 backdrop-blur">
+            <div className="fixed top-0 left-0 w-full p-2 z-10 backdrop-blur text-emerald-500 font-mono">
                 <p className="font-bold">BEM VINDO, PEDRO!</p>
                 <p className="text-xs opacity-90 flex flex-row items-center text-emerald-50"> <FaAngleRight /> Cortex Overflow Mk.2</p>
                 <div className="h-0.5 w-full bg-emerald-800 my-2"></div>
@@ -74,7 +78,7 @@ export default function MainTasks() {
                     <input 
                         type="text" 
                         placeholder="[ Crie uma nova missão ]"
-                        className="bg-black/80 w-full sm:pl-1"
+                        className="bg-black/80 w-full pl-2"
                         value={taskName}
                         onChange={(e) => setTaskName(e.target.value)}
                     />
@@ -88,7 +92,7 @@ export default function MainTasks() {
             </div>
 
             {/* TaskCard list render */}
-            <div className="mt-30 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="mt-30 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mx-2">
                 {orderTasks.map( ( task ) => (
                     <TaskCardComponent 
                         key={task.id} 
