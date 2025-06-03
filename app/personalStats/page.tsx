@@ -31,7 +31,7 @@ export default function personalStats() {
                 <div id="introductionBox" className="w-full flex flex-col border border-emerald-800 bg-black/90 p-3">
                     <p className="text-xs opacity-80">SUBJECT NAME</p>
                     <div className="flex flex-row justify-between items-end">
-                        <h1 className="font-semibold">PEDRO</h1>
+                        <h1 className="font-semibold"> {userData?.name} teste teste</h1>
                         <p className="text-xs text-white flex flex-row"> <span className="opacity-60 mr-1">NÍVEL:</span> <span>0</span> </p>
                     </div>
                 </div>
