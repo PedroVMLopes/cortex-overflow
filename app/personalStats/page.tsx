@@ -19,7 +19,11 @@ const attributes: Attribute[] = [
 export default function personalStats() {
 
     const { userData } = useUserContext();
-    const userAttributes = useUserAttributes();
+    const { userAttributes, loading } = useUserAttributes();
+
+    function completionBarCalc(xp: number) {
+        return ('w-[' + xp + '%]')
+    }
 
     const mergedAttributes =  userAttributes.map((att) => {
         const localInfo = attributes.find(a => a.attShort === att.attribute);
@@ -28,6 +32,7 @@ export default function personalStats() {
             attLong: localInfo?.attLong,
             borderColor: localInfo?.borderColor,
             bgColor: localInfo?.bgColor,
+            percentage: completionBarCalc(att.xp)
         }
     })
     
@@ -53,21 +58,23 @@ export default function personalStats() {
                 <h1 className="mt-3 pl-1 font-bold">ATRIBUTOS</h1>
                 <div className="h-0.5 w-full bg-emerald-800 mb-2 mt-1"></div>
                 <div id="attributeBoxes" className="grid grid-cols-2 gap-2">
-                    {mergedAttributes.map(att => (
-                        <div key={att.attribute} className={`border border-emerald-800 bg-black p-2`}>
-                            <div className="flex flex-row justify-between items-end text-sm text-white">
-                                <p className="">{att.attLong}</p>
-                                <p className="text-base flex flex-row items-end"> <span className="text-xs pb-0.5 pr-0.5 opacity-60">lv</span> <span>0</span> </p>
+                    {loading ? <div className="text-emerald-200">Loading...</div> /* Loading Text */
+                        : mergedAttributes.map(att => (
+                            // Attribute Box
+                            <div key={att.attribute} className={`border border-emerald-800 bg-black p-2`}>
+                                <div className="flex flex-row justify-between items-end text-sm text-white">
+                                    <p className="">{att.attLong}</p>
+                                    <p className="text-base flex flex-row items-end"> <span className="text-xs pb-0.5 pr-0.5 opacity-60">lv</span> <span>{att.level}</span> </p>
+                                </div>
+                                {/* Progress Bar */}
+                                <div className={`border ${att.borderColor} my-1.5 h-2`}>
+                                    <div className={`h-full ${att.percentage} ${att.bgColor} `}></div>
+                                </div>
+                                <div className="w-full flex justify-end">
+                                    <p className="text-xs text-gray-500"> <span className="text-emerald-50">{att.xp}</span>/100 </p>
+                                </div>
                             </div>
-                            <div className={`border ${att.borderColor} my-0.5 h-1`}>
-                                {/* Passar a porcentagem do level como width dessa div p/ preencher a barra */}
-                                <div className={`h-full w-[20%] ${att.bgColor} `}></div>
-                            </div>
-                            <div className="w-full flex justify-end">
-                                <p className="text-xs text-white opacity-40"> 0/100 </p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
 
                 <div className="w-full flex justify-end mt-2 gap-2">

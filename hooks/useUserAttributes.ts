@@ -6,14 +6,20 @@ import { useEffect, useState } from "react";
 export function useUserAttributes() {
     const [ userAttributes, setUserAttributes ] = useState<userAttribute[]>([]);
     const { userData } = useUserContext();
+    const [ loading, setLoading ] = useState(true);
 
+    // Waits until there is a userData to call the database
     useEffect(() => {
+        if (!userData?.id) return;
+
         async function loadUserAttributes() {
             const data = await fetchUserAttributes(userData?.id);
             setUserAttributes(data);
+            setLoading(false);
         }
-        loadUserAttributes()
-    }, [])
 
-    return  userAttributes;
+        loadUserAttributes()
+    }, [userData?.id])
+
+    return  { userAttributes, loading };
 }
