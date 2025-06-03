@@ -21,10 +21,6 @@ export default function personalStats() {
     const { userData } = useUserContext();
     const { userAttributes, loading } = useUserAttributes();
 
-    function completionBarCalc(xp: number) {
-        return ('w-[' + xp + '%]')
-    }
-
     const mergedAttributes =  userAttributes.map((att) => {
         const localInfo = attributes.find(a => a.attShort === att.attribute);
         return {
@@ -32,7 +28,6 @@ export default function personalStats() {
             attLong: localInfo?.attLong,
             borderColor: localInfo?.borderColor,
             bgColor: localInfo?.bgColor,
-            percentage: completionBarCalc(att.xp)
         }
     })
     
@@ -68,7 +63,7 @@ export default function personalStats() {
                                 </div>
                                 {/* Progress Bar */}
                                 <div className={`border ${att.borderColor} my-1.5 h-2`}>
-                                    <div className={`h-full ${att.percentage} ${att.bgColor} `}></div>
+                                    <div className={`h-full ${att.bgColor} `} style={{ width: `${att.xp}%`}}></div>
                                 </div>
                                 <div className="w-full flex justify-end">
                                     <p className="text-xs text-gray-500"> <span className="text-emerald-50">{att.xp}</span>/100 </p>
