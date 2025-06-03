@@ -3,20 +3,38 @@ import { FaAngleRight } from "react-icons/fa";
 import { useUserContext } from "@/context/UserContext";
 import Auth from "@/components/Auth";
 import LogoutButton from "@/components/LogoutButton";
+import { useUserAttributes } from "@/hooks/useUserAttributes";
 
-type Attribute = { attShort: string, attLong: string, color: string }
+type Attribute = { attShort: string, attLong: string, borderColor: string, bgColor: string }
 
 const attributes: Attribute[] = [
-    {attShort: 'STR', attLong: 'Força', color: 'border-yellow-300'},
-    {attShort: 'DEX', attLong: 'Destreza', color: 'border-green-300'},
-    {attShort: 'CON', attLong: 'Constituição', color: 'border-red-300'},
-    {attShort: 'WIZ', attLong: 'Sabedoria', color: 'border-orange-300'},
-    {attShort: 'INT', attLong: 'Inteligência', color: 'border-blue-300'},
-    {attShort: 'CHA', attLong: 'Carisma', color: 'border-pink-300'},
+    {attShort: 'STR', attLong: 'Força', borderColor: 'border-yellow-300', bgColor: 'bg-yellow-300'},
+    {attShort: 'DEX', attLong: 'Destreza', borderColor: 'border-green-300', bgColor: 'bg-green-300'},
+    {attShort: 'CON', attLong: 'Constituição', borderColor: 'border-red-300', bgColor: 'bg-red-300'},
+    {attShort: 'WIZ', attLong: 'Sabedoria', borderColor: 'border-orange-300', bgColor: 'bg-orange-300'},
+    {attShort: 'INT', attLong: 'Inteligência', borderColor: 'border-blue-300', bgColor: 'bg-blue-300'},
+    {attShort: 'CHA', attLong: 'Carisma', borderColor: 'border-pink-300', bgColor: 'bg-pink-300'},
 ];
 
 export default function personalStats() {
+
     const { userData } = useUserContext();
+    const { userAttributes, loading } = useUserAttributes();
+
+    function completionBarCalc(xp: number) {
+        return ('w-[' + xp + '%]')
+    }
+
+    const mergedAttributes =  userAttributes.map((att) => {
+        const localInfo = attributes.find(a => a.attShort === att.attribute);
+        return {
+            ...att,
+            attLong: localInfo?.attLong,
+            borderColor: localInfo?.borderColor,
+            bgColor: localInfo?.bgColor,
+            percentage: completionBarCalc(att.xp)
+        }
+    })
     
     return (
         <>
@@ -31,8 +49,8 @@ export default function personalStats() {
                 <div id="introductionBox" className="w-full flex flex-col border border-emerald-800 bg-black/90 p-3">
                     <p className="text-xs opacity-80">SUBJECT NAME</p>
                     <div className="flex flex-row justify-between items-end">
-                        <h1 className="font-semibold">PEDRO</h1>
-                        <p className="text-xs text-white flex flex-row"> <span className="opacity-60 mr-1">NÍVEL:</span> <span>0</span> </p>
+                        <h1 className="font-semibold"> {userData?.name.toUpperCase()}</h1>
+                        <p className="text-xs text-white flex flex-row"> <span className="opacity-60 mr-1">NÍVEL:</span> <span>{userData?.account_level}</span> </p>
                     </div>
                 </div>
 
@@ -40,21 +58,23 @@ export default function personalStats() {
                 <h1 className="mt-3 pl-1 font-bold">ATRIBUTOS</h1>
                 <div className="h-0.5 w-full bg-emerald-800 mb-2 mt-1"></div>
                 <div id="attributeBoxes" className="grid grid-cols-2 gap-2">
-                    {attributes.map(att => (
-                        <div key={att.attShort} className={`border border-emerald-800 bg-black p-2`}>
-                            <div className="flex flex-row justify-between items-end text-sm text-white">
-                                <p className="">{att.attLong}</p>
-                                <p className="text-base flex flex-row items-end"> <span className="text-xs pb-0.5 pr-0.5 opacity-60">lv</span> <span>0</span> </p>
+                    {loading ? <div className="text-emerald-200">Loading...</div> /* Loading Text */
+                        : mergedAttributes.map(att => (
+                            // Attribute Box
+                            <div key={att.attribute} className={`border border-emerald-800 bg-black p-2`}>
+                                <div className="flex flex-row justify-between items-end text-sm text-white">
+                                    <p className="">{att.attLong}</p>
+                                    <p className="text-base flex flex-row items-end"> <span className="text-xs pb-0.5 pr-0.5 opacity-60">lv</span> <span>{att.level}</span> </p>
+                                </div>
+                                {/* Progress Bar */}
+                                <div className={`border ${att.borderColor} my-1.5 h-2`}>
+                                    <div className={`h-full ${att.percentage} ${att.bgColor} `}></div>
+                                </div>
+                                <div className="w-full flex justify-end">
+                                    <p className="text-xs text-gray-500"> <span className="text-emerald-50">{att.xp}</span>/100 </p>
+                                </div>
                             </div>
-                            <div className={`border ${att.color} my-0.5 h-1`}>
-                                {/* Passar a porcentagem do level como width dessa div p/ preencher a barra */}
-                                <div className="h-full w-[20%] bg-amber-50"></div>
-                            </div>
-                            <div className="w-full flex justify-end">
-                                <p className="text-xs text-white opacity-40"> 0/100 </p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
 
                 <div className="w-full flex justify-end mt-2 gap-2">

@@ -5,4 +5,5 @@ export interface AppUser {
     silver_amount: number;
     gold_amount: number;
     gem_amount: number;
+    account_level: number;
 }

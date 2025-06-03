@@ -28,6 +28,7 @@ export async function fetchCurrentUser(): Promise<AppUser | null> {
         silver_amount: 0,
         gold_amount: 0,
         gem_amount: 0,
+        account_level: 0,
       }, { onConflict: 'auth_user_id'})
       .select()
       .single();
