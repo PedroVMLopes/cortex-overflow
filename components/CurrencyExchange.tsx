@@ -32,8 +32,8 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-col items-center text-white"> <GiCrownCoin className="text-amber-400 text-2xl" /> 5 </p>
                             </div>
                             <p className="text-emerald-500"> <FaCaretRight /> </p>
-                            <div className="p-1 flex flex-col items-center">
-                                <p className="flex flex-col items-center text-white"> <FaGem className="text-cyan-400" /> 1 </p>
+                            <div className="p-1 flex flex-col items-center mt-0.5">
+                                <p className="flex flex-col items-center text-white"> <FaGem className="text-cyan-400 mb-0.5" /> 1 </p>
                             </div>
                         </div>
                         <Button className="w-full mt-1">
