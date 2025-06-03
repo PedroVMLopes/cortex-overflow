@@ -8,12 +8,12 @@ import { useUserAttributes } from "@/hooks/useUserAttributes";
 type Attribute = { attShort: string, attLong: string, borderColor: string, bgColor: string }
 
 const attributes: Attribute[] = [
-    {attShort: 'STR', attLong: 'Força', borderColor: 'border-yellow-300', bgColor: 'bg-yellow-300'},
-    {attShort: 'DEX', attLong: 'Destreza', borderColor: 'border-green-300', bgColor: 'bg-green-300'},
-    {attShort: 'CON', attLong: 'Constituição', borderColor: 'border-red-300', bgColor: 'bg-red-300'},
-    {attShort: 'WIZ', attLong: 'Sabedoria', borderColor: 'border-orange-300', bgColor: 'bg-orange-300'},
-    {attShort: 'INT', attLong: 'Inteligência', borderColor: 'border-blue-300', bgColor: 'bg-blue-300'},
-    {attShort: 'CHA', attLong: 'Carisma', borderColor: 'border-pink-300', bgColor: 'bg-pink-300'},
+    {attShort: 'STR', attLong: 'Força', borderColor: 'border-yellow-400', bgColor: 'bg-yellow-300'},
+    {attShort: 'DEX', attLong: 'Destreza', borderColor: 'border-green-400', bgColor: 'bg-green-300'},
+    {attShort: 'CON', attLong: 'Constituição', borderColor: 'border-red-400', bgColor: 'bg-red-300'},
+    {attShort: 'WIZ', attLong: 'Sabedoria', borderColor: 'border-orange-400', bgColor: 'bg-orange-300'},
+    {attShort: 'INT', attLong: 'Inteligência', borderColor: 'border-blue-400', bgColor: 'bg-blue-300'},
+    {attShort: 'CHA', attLong: 'Carisma', borderColor: 'border-pink-400', bgColor: 'bg-pink-300'},
 ];
 
 export default function personalStats() {
