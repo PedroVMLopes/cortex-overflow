@@ -16,6 +16,10 @@ export async function fetchUserAttributes(userId: number | undefined): Promise<u
 }
 
 export async function updateUserAttribute(attribute: string, userID: number, attributeLevel: number, attributeXp: number) {
+    console.log("attribute: ", attribute )
+    console.log("userID: ", userID )
+    console.log("attributeLevel: ", attributeLevel )
+    console.log("attributeXp: ", attributeXp )
     const { error } = await supabase
         .from('user_attributes')
         .update({

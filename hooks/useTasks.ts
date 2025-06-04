@@ -120,30 +120,23 @@ export function useTasks() {
     }
 
 
-    async function updateTaskXp(id: number, newXp: number) {
-        const task = tasks.find(t => t.id === id);
-        if (!task) return;
-        await updateTaskExperience(task.id, id, newXp);
-    }
-
-
     async function giveTaskExperienceReward(attributeName: string, userId: number, xpReward: number) {
         const attribute = await getSingleAttributeFromUser(attributeName);
-        let xp = 0
-        let level = 0;
 
-        if (attribute) { 
-            xp = attribute.xp; 
-            level = attribute.level;
+        if (attribute) {
+            let level = attribute.level;
 
-            xp += xpReward;
+            let newXp = attribute.xp + xpReward;
 
-            while ( xp >= 100 ) {
-                xp -= 100;
+            while ( newXp >= 100 ) {
+                newXp -= 100;
                 level += 1;
             }
 
-            await updateUserAttribute(attributeName, userId, level, xp)
+            console.log("attribute.level: ", attribute.level);
+            console.log("xpReward: ", xpReward);
+            console.log("newXp: ", newXp);
+            await updateUserAttribute(attributeName, userId, level, newXp)
         };
     }
 
@@ -204,7 +197,7 @@ export function useTasks() {
         }
 
         try {
-            await updateTaskXp(selectedTaskId, newXp);
+            await updateTaskExperience(selectedTaskId, userData.id, newXp);
 
             const newUserGems = userGems - price;
             await updateUserCurrency(newUserGems, 'gem_amount', userData.id);

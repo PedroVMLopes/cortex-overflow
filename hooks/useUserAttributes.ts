@@ -24,7 +24,7 @@ export function useUserAttributes() {
     async function getSingleAttributeFromUser(att: string) {
         console.log("userAttributes: ", userAttributes);
         console.log("att: ", att);
-        return userAttributes.find(a => a.attribute !== att );
+        return userAttributes.find(a => a.attribute === att );
     }
 
     return  { 
