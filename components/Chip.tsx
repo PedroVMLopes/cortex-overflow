@@ -35,9 +35,9 @@ export default function ComputerChip() {
         
         {/* Slot de instalação */}
         <div className="relative bg-gradient-to-b from-gray-800 to-gray-900">
-          <button className="w-full py-3 pt-2 bg-gradient-to-r from-emerald-900 to-emerald-800 hover:from-emerald-800 hover:to-emerald-700 text-xs flex flex-row items-center justify-center font-mono font-bold text-emerald-100 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border-t border-emerald-600/50">
+          <button className="w-full py-4 pb-5 bg-gradient-to-r from-emerald-900 to-emerald-800 hover:from-emerald-800 hover:to-emerald-700 text-xs flex flex-row items-center justify-center font-mono font-bold text-emerald-100 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 border-t border-emerald-600/50">
             <span className="tracking-wider">IMPLANTAR: 2</span>
-            <FaGem className="mx-1 text-blue-400 text-base drop-shadow-md" />
+            <FaGem className="ml-1.5 text-blue-400 text-base drop-shadow-md" />
           </button>
           
           {/* Conectores na parte inferior */}
