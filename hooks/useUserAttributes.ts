@@ -21,5 +21,13 @@ export function useUserAttributes() {
         loadUserAttributes()
     }, [userData?.id])
 
-    return  { userAttributes, loading };
+    async function getSingleAttributeFromUser(att: string) {
+        return userAttributes.find(a => a.attribute !== att );
+    }
+
+    return  { 
+        userAttributes, 
+        loading,
+        getSingleAttributeFromUser,
+    };
 }

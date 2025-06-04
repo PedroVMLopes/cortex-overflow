@@ -5,20 +5,23 @@ import {
     updateTaskRewardOnDB, 
     updateCompletionOnDB, 
     giveTaskRewardToUser, 
-    updateTaskAttributesOnDB, 
-    getUserAttribute, 
-    updateUserAttribute 
+    updateTaskAttributesOnDB,
+    updateTaskExperience,
 } from "@/services/taskServices";
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 import { useUserContext } from "@/context/UserContext";
 import { AppUser } from "@/types/AppUser";
+import { updateUserAttribute } from "@/services/attributeServices";
+import { useUserAttributes } from "./useUserAttributes";
+import { updateUserCurrency } from "@/services/userServices";
 
 
 export function useTasks() {
     const [ tasks, setTasks ] = useState<Task[]>([]);
     const [ loading, setLoading ] = useState(true);
     const { userData, refreshUserData } = useUserContext();
+    const { getSingleAttributeFromUser } = useUserAttributes();
 
     useEffect(() => {
         async function loadTasks() {
@@ -93,7 +96,7 @@ export function useTasks() {
         const prevGoldAmount = userData?.gold_amount || 0;
         const prevSilverAmount = userData?.silver_amount || 0;
         
-        await giveTaskRewardToUser(id, userId, (prevSilverAmount + silver_reward), (prevGoldAmount + gold_reward))
+        await giveTaskRewardToUser(userId, (prevSilverAmount + silver_reward), (prevGoldAmount + gold_reward))
         refreshUserData();
     }
 
@@ -117,17 +120,31 @@ export function useTasks() {
     }
 
 
-    async function giveTaskExperienceReward(userId: number, attributeName: string, xpReward: number) {
-        let { id, level, xp } = await getUserAttribute(userId, attributeName);
+    async function updateTaskXp(id: number, newXp: number) {
+        const task = tasks.find(t => t.id === id);
+        if (!task) return;
+        await updateTaskExperience(task.id, id, newXp);
+    }
 
-        xp += xpReward;
 
-        while (xp >= 100 ) {
-            xp -= 100;
-            level += 1;
-        }
+    async function giveTaskExperienceReward(attributeName: string, xpReward: number) {
+        const attribute = await getSingleAttributeFromUser(attributeName);
+        let xp = 0
+        let level = 0;
 
-        await updateUserAttribute(id, level, xp)
+        if (attribute) { 
+            xp = attribute.xp; 
+            level = attribute.level;
+
+            xp += xpReward;
+
+            while ( xp >= 100 ) {
+                xp -= 100;
+                level += 1;
+            }
+
+            await updateUserAttribute(attribute.id, level, xp)
+        };
     }
 
 
@@ -148,7 +165,7 @@ export function useTasks() {
 
         if (!wasRewardGiven) {
             await giveTaskReward(id, userId, silver_reward, gold_reward, userData, refreshUserData);
-            if(attribute) await giveTaskExperienceReward(userData.id, attribute, xpReward);
+            if(attribute) await giveTaskExperienceReward(attribute, xpReward);
         }
 
         const newStatus = !completionStatus;
@@ -167,25 +184,37 @@ export function useTasks() {
         )
     }
 
-    async function implementChipInTask(selectedTaskId: number | null, price: number) {
-
-        let userGems = 0;
-        if (userData) { userGems = userData.gem_amount }
+    async function implementChipInTask(selectedTaskId: number | null, price: number, newXp: number) {
+        if (!userData) {
+            alert("Erro: dados do usuário não disponíveis.");
+            return;
+        }
 
         if (selectedTaskId === null) {
-            alert("Selecione uma missão antes de aplicar o chip.")
+            alert("Selecione uma missão antes de aplicar o chip.");
+            return;
         }
 
-        if ( price > userGems ) {
-            alert("Gemas Insuficientes.");
-        } else {
-            
+        const userGems = userData.gem_amount;
+
+        if (price > userGems) {
+            alert("Gemas insuficientes.");
+            return;
+        }
+
+        try {
+            await updateTaskXp(selectedTaskId, newXp);
 
             const newUserGems = userGems - price;
+            await updateUserCurrency(newUserGems, 'gem_amount', userData.id);
 
+            await refreshUserData();
+        } catch (error) {
+            console.error("Erro ao aplicar o chip na tarefa:", error);
+            alert("Ocorreu um erro ao aplicar o chip. Tente novamente.");
         }
-        
     }
+
 
 
     return { 

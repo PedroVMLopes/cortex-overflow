@@ -36,8 +36,8 @@ export default function ChipStore() {
                     </select>
                 </div>
                 <div className="grid grid-cols-2 mt-4 px-4 gap-7">
-                    <Chip description={"Aumenta o XP da missão para 5"} price={1} selectedTaskId={selectedTaskId}/>
-                    <Chip description={"Aumenta o XP da missão para 10"} price={2} selectedTaskId={selectedTaskId}/>
+                    <Chip description={"Aumenta o XP da missão para 5"} price={1} selectedTaskId={selectedTaskId} newXpReward={5}/>
+                    <Chip description={"Aumenta o XP da missão para 10"} price={2} selectedTaskId={selectedTaskId} newXpReward={10}/>
                 </div>
                 <div>
                     <p className="text-xs px-4 mt-6">Missões aprimoradas com chips dão <span className="text-emerald-200">01 circuitos</span> como recompensa.</p>
