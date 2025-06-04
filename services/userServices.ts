@@ -60,3 +60,12 @@ export async function fetchCurrentUser(): Promise<AppUser | null> {
     return newUser;
   }
 }
+
+export async function updateUserCurrency(newValue: number, currency: 'silver_amount' | 'gold_amount' | 'gem_amount', userId: number) {
+  const { error } = await supabase
+    .from('users')
+    .update({ [currency]: newValue })
+    .eq('id', userId)
+
+  if (error) console.error("Error on updating user currency: ", error.message);
+}

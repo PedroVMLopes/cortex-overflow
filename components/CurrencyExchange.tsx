@@ -1,8 +1,14 @@
+'use client'
+
 import { FaGem, FaCaretRight } from "react-icons/fa";
 import { GiCrownCoin } from "react-icons/gi";
 import Button from "./KeyboardButton";
+import { useAppUser } from "@/hooks/useAppUsers";
 
 export default function CurrencyExchange() {
+
+    const { exchangeCurrency } = useAppUser();
+
     return (
         <>
             <div className="border border-emerald-800">
@@ -20,8 +26,11 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-col items-center justify-center text-white"> <GiCrownCoin className="text-amber-400 text-2xl" /> 1 </p>
                             </div>
                         </div>
-                        <Button className="mt-1">
-                            <p className="flex flex-row items-center justify-center"> [EXEC] <GiCrownCoin className="text-gray-300 text-lg mx-1" /> 10 </p>
+                        <Button 
+                            className="mt-1 w-full"
+                            onClick={() => exchangeCurrency('toGold')}
+                        >
+                            <p className="flex flex-row items-center justify-center"> EXEC <GiCrownCoin className="text-gray-300 text-lg mx-1" /> 10 </p>
                         </Button>
                     </div>
 
@@ -36,8 +45,11 @@ export default function CurrencyExchange() {
                                 <p className="flex flex-col items-center text-white"> <FaGem className="text-cyan-400 mb-0.5" /> 1 </p>
                             </div>
                         </div>
-                        <Button className="w-full mt-1">
-                            <p className="flex flex-row items-center justify-center w-full"> [EXEC] <GiCrownCoin className="text-amber-300 text-lg mx-1" /> 1 </p>
+                        <Button 
+                            className="w-full"
+                            onClick={() => exchangeCurrency('toGem')}
+                        >
+                            <p className="flex flex-row items-center justify-center w-full"> EXEC <GiCrownCoin className="text-amber-300 text-lg mx-1" /> 1 </p>
                         </Button>
                     </div>
                 </div>
