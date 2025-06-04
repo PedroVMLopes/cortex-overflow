@@ -50,13 +50,13 @@ export default function personalStats() {
                 </div>
 
                 {/* Attribute boxes */}
-                <h1 className="mt-3 pl-1 font-bold">ATRIBUTOS</h1>
+                <h1 className="mt-3 pl-1 font-bold text-emerald-200">ATRIBUTOS</h1>
                 <div className="h-0.5 w-full bg-emerald-800 mb-2 mt-1"></div>
                 <div id="attributeBoxes" className="grid grid-cols-2 gap-2">
                     {loading ? <div className="text-emerald-200">Loading...</div> /* Loading Text */
                         : mergedAttributes.map(att => (
                             // Attribute Box
-                            <div key={att.attribute} className={`border border-emerald-800 bg-black p-2`}>
+                            <div key={att.attribute} className={`border border-emerald-900 bg-black p-2`}>
                                 <div className="flex flex-row justify-between items-end text-sm text-white">
                                     <p className="">{att.attLong}</p>
                                     <p className="text-base flex flex-row items-end"> <span className="text-xs pb-0.5 pr-0.5 opacity-60">lv</span> <span>{att.level}</span> </p>

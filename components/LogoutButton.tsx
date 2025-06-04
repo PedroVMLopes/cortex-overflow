@@ -22,7 +22,7 @@ export default function LogoutButton() {
 
     return (
         <Button
-            className="gap-1 border-b-red-900 border-r-red-950 border-l-red-900 border-t-red-800 shadow-red-800 bg-gradient-to-tr from-red-900 to-red-400/30 text-red-100"
+            className="gap-1 border-b-red-900 border-r-red-950 border-l-red-900 border-t-red-800 shadow-red-800 bg-gradient-to-tr from-red-900 to-red-400/30 backdrop-blur-3xl text-red-100"
             onClick={handleLogout}
             >
             Logout <BiSolidLogOut />
