@@ -167,6 +167,26 @@ export function useTasks() {
         )
     }
 
+    async function implementChipInTask(selectedTaskId: number | null, price: number) {
+
+        let userGems = 0;
+        if (userData) { userGems = userData.gem_amount }
+
+        if (selectedTaskId === null) {
+            alert("Selecione uma missão antes de aplicar o chip.")
+        }
+
+        if ( price > userGems ) {
+            alert("Gemas Insuficientes.");
+        } else {
+            
+
+            const newUserGems = userGems - price;
+
+        }
+        
+    }
+
 
     return { 
         tasks, 
@@ -175,7 +195,8 @@ export function useTasks() {
         removeTaskById,
         updateTaskReward,
         toggleTaskCompletion,
-        toggleTaskAttribute
+        toggleTaskAttribute,
+        implementChipInTask,
     };
 
 }
