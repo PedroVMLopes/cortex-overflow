@@ -127,7 +127,7 @@ export function useTasks() {
     }
 
 
-    async function giveTaskExperienceReward(attributeName: string, xpReward: number) {
+    async function giveTaskExperienceReward(attributeName: string, userId: number, xpReward: number) {
         const attribute = await getSingleAttributeFromUser(attributeName);
         let xp = 0
         let level = 0;
@@ -143,7 +143,7 @@ export function useTasks() {
                 level += 1;
             }
 
-            await updateUserAttribute(attribute.id, level, xp)
+            await updateUserAttribute(attributeName, userId, level, xp)
         };
     }
 
@@ -162,10 +162,11 @@ export function useTasks() {
     ) {
         const task = tasks.find(t => t.id === id);
         if (!task) return
-
+        
         if (!wasRewardGiven) {
             await giveTaskReward(id, userId, silver_reward, gold_reward, userData, refreshUserData);
-            if(attribute) await giveTaskExperienceReward(attribute, xpReward);
+            if(attribute) await giveTaskExperienceReward(attribute, userId, xpReward);
+            console.log("Attribute: ", attribute);
         }
 
         const newStatus = !completionStatus;

@@ -15,14 +15,15 @@ export async function fetchUserAttributes(userId: number | undefined): Promise<u
     return data || [];
 }
 
-export async function updateUserAttribute(userAttributeId: number, attributeLevel: number, attributeXp: number) {
+export async function updateUserAttribute(attribute: string, userID: number, attributeLevel: number, attributeXp: number) {
     const { error } = await supabase
         .from('user_attributes')
         .update({
             level: attributeLevel,
             xp: attributeXp
         })
-        .eq('id', userAttributeId);
+        .eq('attribute', attribute)
+        .eq('user_id', userID);
 
     if(error) {
         console.error("Erro ao coletar os dados de user_attribute: ", error.message);
