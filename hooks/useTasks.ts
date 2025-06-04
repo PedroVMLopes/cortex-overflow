@@ -203,12 +203,12 @@ export function useTasks() {
             await updateUserCurrency(newUserGems, 'gem_amount', userData.id);
 
             await refreshUserData();
+            alert("Chip implementado com sucesso.");
         } catch (error) {
             console.error("Erro ao aplicar o chip na tarefa:", error);
             alert("Ocorreu um erro ao aplicar o chip. Tente novamente.");
         }
     }
-
 
 
     return { 
