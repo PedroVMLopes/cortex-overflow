@@ -5,20 +5,23 @@ import {
     updateTaskRewardOnDB, 
     updateCompletionOnDB, 
     giveTaskRewardToUser, 
-    updateTaskAttributesOnDB, 
-    getUserAttribute, 
-    updateUserAttribute 
+    updateTaskAttributesOnDB,
+    updateTaskExperience,
 } from "@/services/taskServices";
 import { Task } from "@/types/task";
 import { useDebouncedCallback } from "use-debounce";
 import { useUserContext } from "@/context/UserContext";
 import { AppUser } from "@/types/AppUser";
+import { updateUserAttribute } from "@/services/attributeServices";
+import { useUserAttributes } from "./useUserAttributes";
+import { updateUserCurrency } from "@/services/userServices";
 
 
 export function useTasks() {
     const [ tasks, setTasks ] = useState<Task[]>([]);
     const [ loading, setLoading ] = useState(true);
     const { userData, refreshUserData } = useUserContext();
+    const { getSingleAttributeFromUser } = useUserAttributes();
 
     useEffect(() => {
         async function loadTasks() {
@@ -93,7 +96,7 @@ export function useTasks() {
         const prevGoldAmount = userData?.gold_amount || 0;
         const prevSilverAmount = userData?.silver_amount || 0;
         
-        await giveTaskRewardToUser(id, userId, (prevSilverAmount + silver_reward), (prevGoldAmount + gold_reward))
+        await giveTaskRewardToUser(userId, (prevSilverAmount + silver_reward), (prevGoldAmount + gold_reward))
         refreshUserData();
     }
 
@@ -117,17 +120,24 @@ export function useTasks() {
     }
 
 
-    async function giveTaskExperienceReward(userId: number, attributeName: string, xpReward: number) {
-        let { id, level, xp } = await getUserAttribute(userId, attributeName);
+    async function giveTaskExperienceReward(attributeName: string, userId: number, xpReward: number) {
+        const attribute = await getSingleAttributeFromUser(attributeName);
 
-        xp += xpReward;
+        if (attribute) {
+            let level = attribute.level;
 
-        while (xp >= 100 ) {
-            xp -= 100;
-            level += 1;
-        }
+            let newXp = attribute.xp + xpReward;
 
-        await updateUserAttribute(id, level, xp)
+            while ( newXp >= 100 ) {
+                newXp -= 100;
+                level += 1;
+            }
+
+            console.log("attribute.level: ", attribute.level);
+            console.log("xpReward: ", xpReward);
+            console.log("newXp: ", newXp);
+            await updateUserAttribute(attributeName, userId, level, newXp)
+        };
     }
 
 
@@ -145,10 +155,11 @@ export function useTasks() {
     ) {
         const task = tasks.find(t => t.id === id);
         if (!task) return
-
+        
         if (!wasRewardGiven) {
             await giveTaskReward(id, userId, silver_reward, gold_reward, userData, refreshUserData);
-            if(attribute) await giveTaskExperienceReward(userData.id, attribute, xpReward);
+            if(attribute) await giveTaskExperienceReward(attribute, userId, xpReward);
+            console.log("Attribute: ", attribute);
         }
 
         const newStatus = !completionStatus;
@@ -167,6 +178,38 @@ export function useTasks() {
         )
     }
 
+    async function implementChipInTask(selectedTaskId: number | null, price: number, newXp: number) {
+        if (!userData) {
+            alert("Erro: dados do usuário não disponíveis.");
+            return;
+        }
+
+        if (selectedTaskId === null) {
+            alert("Selecione uma missão antes de aplicar o chip.");
+            return;
+        }
+
+        const userGems = userData.gem_amount;
+
+        if (price > userGems) {
+            alert("Gemas insuficientes.");
+            return;
+        }
+
+        try {
+            await updateTaskExperience(selectedTaskId, userData.id, newXp);
+
+            const newUserGems = userGems - price;
+            await updateUserCurrency(newUserGems, 'gem_amount', userData.id);
+
+            await refreshUserData();
+            alert("Chip implementado com sucesso.");
+        } catch (error) {
+            console.error("Erro ao aplicar o chip na tarefa:", error);
+            alert("Ocorreu um erro ao aplicar o chip. Tente novamente.");
+        }
+    }
+
 
     return { 
         tasks, 
@@ -175,7 +218,8 @@ export function useTasks() {
         removeTaskById,
         updateTaskReward,
         toggleTaskCompletion,
-        toggleTaskAttribute
+        toggleTaskAttribute,
+        implementChipInTask,
     };
 
 }
