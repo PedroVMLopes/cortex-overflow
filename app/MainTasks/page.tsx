@@ -64,7 +64,7 @@ export default function MainTasks() {
         <div className="pb-16">
             <div
                 id="background"
-                className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat"
+                className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat opacity-20"
                 style={{ backgroundImage: "url('/backgrounds/bg4.jpg')" }}
             />
 

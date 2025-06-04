@@ -2,16 +2,16 @@ import { FaGem } from 'react-icons/fa';
 
 export default function ComputerChip() {
   return (
-    <div className="relative py-2">
+    <div className="relative">
 
       {/* Para adicionar pins laterais mude o valor dos arrays */}
       <div className="absolute -left-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(4)].map((_, i) => (
+        {[...Array(0)].map((_, i) => (
           <div key={i} className="w-3 h-1 bg-yellow-500 border border-yellow-700"></div>
         ))}
       </div>
       <div className="absolute -right-2 top-3 bottom-3 flex flex-col justify-evenly">
-        {[...Array(4)].map((_, i) => (
+        {[...Array(0)].map((_, i) => (
           <div key={i} className="w-3 h-1 bg-yellow-500 border border-yellow-700"></div>
         ))}
       </div>
@@ -21,7 +21,7 @@ export default function ComputerChip() {
       <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-700 shadow-xl relative overflow-hidden">   
         
         {/* Header do chip */}
-        <div className="relative bg-gradient-to-r from-emerald-950 to-emerald-900 p-3 border-b border-emerald-700">
+        <div className="relative bg-gradient-to-r from-emerald-950 to-emerald-900 p-3 border-b border-emerald-700 py-4">
           <div className="flex flex-row text-sm items-center justify-evenly relative z-10">
             <p className="text-white font-mono font-bold tracking-wider">ATRIBUTO +</p>
           </div>
@@ -49,12 +49,12 @@ export default function ComputerChip() {
         </div>
         
         {/* Cantos chanfrados característicos de chips */}
-        <div className="absolute top-0 left-0 w-3 h-3 bg-gray-700 transform rotate-45 -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 left-0 w-3 h-3 bg-yellow-800 transform rotate-45 -translate-x-1/2 -translate-y-1/2"></div>
         
       </div>
       
       {/* Sombra do chip */}
-      <div className="absolute inset-0 bg-black/30 transform translate-x-1 translate-y-3 h-34 -z-10 border-2 border-transparent"></div>
+      <div className="absolute inset-0 bg-black/30 transform translate-x-2 translate-y-2 -z-10 border-2 border-transparent"></div>
     </div>
   );
 }
