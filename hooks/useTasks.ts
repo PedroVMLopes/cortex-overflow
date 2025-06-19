@@ -210,6 +210,11 @@ export function useTasks() {
         }
     }
 
+    async function resetTaskRewards(selectedTaskId: number, userId: number) {
+        if ( userId ) {
+            updateCompletionOnDB(selectedTaskId, userId, false, false)
+        }
+    }
 
     return { 
         tasks, 
@@ -220,6 +225,7 @@ export function useTasks() {
         toggleTaskCompletion,
         toggleTaskAttribute,
         implementChipInTask,
+        resetTaskRewards,
     };
 
 }

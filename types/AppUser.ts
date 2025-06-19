@@ -6,4 +6,5 @@ export interface AppUser {
     gold_amount: number;
     gem_amount: number;
     account_level: number;
+    last_reset: Date;
 }
