@@ -4,7 +4,7 @@ import { TaskCardComponent } from "@/components/taskCard";
 import { useUserContext } from "@/context/UserContext";
 import { useTasks } from "@/hooks/useTasks";
 import { createTask, updateCompletionOnDB } from "@/services/taskServices";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaAngleRight } from "react-icons/fa";
 
 export default function DaylyTasks() {
@@ -14,17 +14,10 @@ export default function DaylyTasks() {
     const [ taskName, setTaskName ] = useState("");
     const { tasks, loading, setTasks, removeTaskById, updateTaskReward, toggleTaskCompletion, toggleTaskAttribute } = useTasks();
     const dailyTasks = tasks.filter((task) => task.is_daily === true );
-    console.table(dailyTasks);
     
-    const today = new Date().toISOString().slice(0, 10); // ex: "2025-06-19"
-    const lastReset = userData?.last_reset?.toISOString?.().slice(0, 10); // se for Date, converte
+    const today = new Date().toISOString().slice(0, 10);
+    const lastReset = userData?.last_reset?.toISOString?.().slice(0, 10);
     const isNextDay = today !== lastReset;
-
-    if ( isNextDay && userData ) {
-        dailyTasks.forEach((task) => {
-            updateCompletionOnDB(task.id, userData.id, false, false)
-        })
-    }
 
     const handleCreateTask = async () => {
         if (!taskName.trim()) return;
@@ -37,6 +30,14 @@ export default function DaylyTasks() {
             alert('Erro ao criar task. Veja o console.');
         }
     };
+
+    useEffect(() => {
+        if ( isNextDay && userData ) {
+            dailyTasks.forEach((task) => {
+                updateCompletionOnDB(task.id, userData.id, false, false)
+            })
+        }
+    }, [isNextDay])
 
     return (
         <div className="pb-16">
