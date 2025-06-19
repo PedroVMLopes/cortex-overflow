@@ -13,8 +13,9 @@ export default function MainTasks() {
 
     const [ taskName, setTaskName ] = useState("");
     const { tasks, loading, setTasks, removeTaskById, updateTaskReward, toggleTaskCompletion, toggleTaskAttribute } = useTasks();
+    const notDailyTasks = tasks.filter((task) => !task.is_daily );
     const now = new Date().getTime();
-    const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+    const ONE_DAY_MS = 20 * 60 * 60 * 1000; // The day duration was reduced from 24h to 20h
 
     const { userData } = useUserContext();
 
@@ -22,7 +23,7 @@ export default function MainTasks() {
         if (!taskName.trim()) return;
 
         try {
-            const newTask = await createTask(taskName, userData?.id);
+            const newTask = await createTask(taskName, userData?.id, false);
             setTasks(prev => [...prev, newTask]);
             setTaskName('');
         } catch (error) {
@@ -31,7 +32,7 @@ export default function MainTasks() {
     };
 
     // Excludes from the list the tasks that were completed in more than 24h 
-    const filteredTasks = tasks.filter(task => {
+    const filteredTasks = notDailyTasks.filter(task => {
         const createdAt = new Date(task.created_at).getTime();
 
         // Always shows the unfinished tasks
@@ -46,14 +47,6 @@ export default function MainTasks() {
         // Order the uncompleted tasks first
         if(a.is_completed !== b.is_completed) {
             return a.is_completed ? 1 : -1;
-        }
-
-        // Calculates the reward total (10 silver = 1 gold)
-        const aReward = a.gold_reward * 10 + a.silver_reward;
-        const bReward = b.gold_reward * 10 + b.silver_reward;
-
-        if (aReward !== bReward) {
-            return bReward - aReward;
         }
 
         // If the reward is the same sorts by creation date
