@@ -133,9 +133,6 @@ export function useTasks() {
                 level += 1;
             }
 
-            console.log("attribute.level: ", attribute.level);
-            console.log("xpReward: ", xpReward);
-            console.log("newXp: ", newXp);
             await updateUserAttribute(attributeName, userId, level, newXp)
         };
     }
@@ -159,7 +156,6 @@ export function useTasks() {
         if (!wasRewardGiven) {
             await giveTaskReward(id, userId, silver_reward, gold_reward, userData, refreshUserData);
             if(attribute) await giveTaskExperienceReward(attribute, userId, xpReward);
-            console.log("Attribute: ", attribute);
         }
 
         const newStatus = !completionStatus;

@@ -4,6 +4,7 @@ import { TaskCardComponent } from "@/components/taskCard";
 import { useUserContext } from "@/context/UserContext";
 import { useTasks } from "@/hooks/useTasks";
 import { createTask, updateCompletionOnDB } from "@/services/taskServices";
+import { updateLastReset } from "@/services/userServices";
 import { useEffect, useState } from "react";
 import { FaAngleRight } from "react-icons/fa";
 
@@ -16,7 +17,7 @@ export default function DaylyTasks() {
     const dailyTasks = tasks.filter((task) => task.is_daily === true );
     
     const today = new Date().toISOString().slice(0, 10);
-    const lastReset = userData?.last_reset?.toISOString?.().slice(0, 10);
+    const lastReset = userData?.last_reset.toString().slice(0, 10);
     const isNextDay = today !== lastReset;
 
     const handleCreateTask = async () => {
@@ -31,13 +32,12 @@ export default function DaylyTasks() {
         }
     };
 
-    useEffect(() => {
-        if ( isNextDay && userData ) {
-            dailyTasks.forEach((task) => {
-                updateCompletionOnDB(task.id, userData.id, false, false)
-            })
-        }
-    }, [isNextDay])
+    if ( isNextDay && userData ) {
+        dailyTasks.forEach((task) => {
+            updateCompletionOnDB(task.id, userData.id, false, false)
+        })
+        updateLastReset(userData.id, today);
+    }
 
     return (
         <div className="pb-16">
