@@ -9,4 +9,5 @@ export interface Task {
     xp_reward: number;
     created_at: Date;
     attribute?: string;
+    is_daily?: boolean;
 }

@@ -69,3 +69,12 @@ export async function updateUserCurrency(newValue: number, currency: 'silver_amo
 
   if (error) console.error("Error on updating user currency: ", error.message);
 }
+
+export async function updateLastReset(userId: number, resetDate: string) {
+  const { error } = await supabase
+    .from('users')
+    .update({ last_reset: resetDate })
+    .eq( 'id', userId)
+
+  if (error) console.error("Erro ao atualizar o last_updated do usuário: ", error.message);
+}

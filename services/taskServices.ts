@@ -15,7 +15,7 @@ export async function fetchTasks(): Promise<Task[]> {
     return data || [];
 }
 
-export async function createTask(name: string, userId: number | undefined): Promise<Task> {
+export async function createTask(name: string, userId: number | undefined, isDaily: boolean): Promise<Task> {
     const { data, error } = await supabase
         .from('tasks')
         .insert({
@@ -25,7 +25,8 @@ export async function createTask(name: string, userId: number | undefined): Prom
             silver_reward: 0,
             gold_reward: 0,
             is_completed: false,
-            reward_given: false
+            reward_given: false,
+            is_daily: isDaily,
         })
         .select()
         .single();
