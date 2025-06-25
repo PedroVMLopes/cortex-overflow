@@ -56,7 +56,7 @@ export default function DaylyTasks() {
                     <div className="flex justify-between border border-emerald-800">
                         <input 
                             type="text" 
-                            placeholder="[ Crie uma nova missão ]"
+                            placeholder="[ Crie uma missão diária ]"
                             className="bg-black/80 w-full pl-2"
                             value={taskName}
                             onChange={(e) => setTaskName(e.target.value)}
