@@ -27,6 +27,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^16.6.0",
     "jest": "^30.0.3",
     "jest-environment-jsdom": "^30.0.2",
     "tailwindcss": "^4",

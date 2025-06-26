@@ -42,7 +42,7 @@ export default function MainTasks() {
         return now - createdAt <= ONE_DAY_MS;
     })
 
-    // Orders the tasks according to their reward and completion
+    // Orders the tasks according to their completion
     const orderTasks = filteredTasks.sort((a, b) => {
         // Order the uncompleted tasks first
         if(a.is_completed !== b.is_completed) {
