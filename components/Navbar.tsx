@@ -10,23 +10,23 @@ export const Navbar = () => {
 
     return (
         <div className="fixed bottom-0 w-full font-mono text-emerald-600 z-100">
-            <div className="grid grid-cols-3 gap-0.5 items-center text-center border border-b-0 bg-black border-emerald-900">
+            <div className="flex flex-row justify-end text-center">
 
-                <div className="flex flex-col justify-center items-center py-1">
+                <div className="flex flex-col justify-center items-center p-1 px-2 bg-black border border-r-0 border-emerald-900">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-gray-400"/>
                         <p className="text-base font-bold">{userData?.silver_amount}</p>
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center items-center border-r border-l border-emerald-900 py-1">
+                <div className="flex flex-col justify-center items-center p-1 px-2 bg-black border border-x-0 border-emerald-900">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiCrownCoin className="text-amber-300"/>
                         <p className="text-base font-bold">{userData?.gold_amount}</p>
                     </div>
                 </div>
                     
-                <div className="flex flex-col justify-center items-center py-1">
+                <div className="flex flex-col justify-center items-center p-1 px-2 bg-black border border-l-0 border-emerald-900">
                     <div className="flex flex-row gap-1.5 items-center">
                         <GiGems className="text-blue-400"/>
                         <p className="text-base font-bold">{userData?.gem_amount}</p>
