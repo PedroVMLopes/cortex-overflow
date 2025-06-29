@@ -3,10 +3,17 @@
 import { GiCrownCoin, GiGems, GiSixEyes, GiMaceHead, GiBrickPile, GiBrainTentacle, GiCrownOfThorns } from "react-icons/gi";
 import Link from "next/link";
 import { useUserContext } from "../context/UserContext";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
-
     const { userData } = useUserContext();
+    const pathname = usePathname();
+
+    const buttonStyle = (route: string) =>
+        pathname === route
+            ? "text-emerald-100 bg-emerald-700"
+            : "text-emerald-300 hover:bg-emerald-800"
+    
 
     return (
         <div className="fixed bottom-0 w-full font-mono text-emerald-600 z-100">
@@ -34,22 +41,12 @@ export const Navbar = () => {
                 </div>
                     
             </div>
-            <div className="grid grid-cols-5 grid-rows-1 items-center text-center text-3xl border bg-black border-emerald-900 py-2 text-emerald-300">
-                <div className="flex justify-center">
-                    <Link href="/MainTasks"><GiSixEyes /></Link>
-                </div>
-                <div className="flex justify-center">
-                    <Link href="/DailyTasks"><GiCrownOfThorns /></Link>
-                </div>
-                <div className="flex justify-center">
-                    <Link href="/LegacyObjectives"><GiMaceHead /></Link>
-                </div>
-                <div className="flex justify-center">
-                    <Link href="/Store"><GiBrickPile /></Link>
-                </div>
-                <div className="flex justify-center">
-                    <Link href="/personalStats"><GiBrainTentacle /></Link>
-                </div>
+            <div className="grid grid-cols-5 grid-rows-1 items-center text-center text-3xl border bg-black border-emerald-900 text-emerald-300">
+                <Link href="/MainTasks" className={`flex justify-center py-2 ${buttonStyle("/MainTasks")}`}><GiSixEyes /></Link>
+                <Link href="/DailyTasks" className={`flex justify-center py-2 ${buttonStyle("/DailyTasks")}`}><GiCrownOfThorns /></Link>
+                <Link href="/LegacyObjectives" className={`flex justify-center py-2 ${buttonStyle("/LegacyObjectives")}`}><GiMaceHead /></Link>
+                <Link href="/Store" className={`flex justify-center py-2 ${buttonStyle("/Store")}`}><GiBrickPile /></Link>
+                <Link href="/personalStats" className={`flex justify-center py-2 ${buttonStyle("/personalStats")}`}><GiBrainTentacle /></Link>
             </div>
         </div>
     )
