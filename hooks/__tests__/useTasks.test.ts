@@ -39,35 +39,35 @@ describe("useTasks with useUserContext and fetchTasks mock", () => {
         const tasksMock = [
             {
                 id: 1,
-                name: "",
+                name: "name1",
                 silver_reward: 0,
                 gold_reward: 0,
                 is_completed: false,
                 reward_given: false,
                 user_id: 0,
-                xp_reward: 0,
+                xp_reward: 1,
                 created_at: fixedDate
             },
             {
                 id: 2,
-                name: "",
+                name: "name2",
                 silver_reward: 0,
                 gold_reward: 0,
                 is_completed: false,
                 reward_given: false,
                 user_id: 0,
-                xp_reward: 0,
+                xp_reward: 1,
                 created_at: fixedDate
             },
             {
                 id: 3,
-                name: "",
+                name: "name3",
                 silver_reward: 0,
                 gold_reward: 0,
                 is_completed: false,
                 reward_given: false,
                 user_id: 0,
-                xp_reward: 0,
+                xp_reward: 1,
                 created_at: fixedDate
             }
         ];
