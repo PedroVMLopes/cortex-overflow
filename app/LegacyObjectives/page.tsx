@@ -105,10 +105,12 @@ export default function LegacyObjectives() {
                             </div>
 
                             {/* Add Custom Log */}
-                            <input type="text" name="custom_log" id="" placeholder="Add Custom Log" className="text-center"/>
+                            <div className="flex flex-row items-center justify-around mt-4">
+                                <input type="text" name="custom_log" id="" placeholder="Add a Custom Log" className="w-full pl-2 py-1 mr-1"/>
+                                <button type="button" className="text-emerald-100 bg-emerald-950 p-0.5 px-1.5">Add</button>
+                            </div>
                         </div>
                     }
-                    
 
                     {/* Controller Buttons */}
                     <div className="flex flex-row gap-2 mt-4">
