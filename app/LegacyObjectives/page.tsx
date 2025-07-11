@@ -1,6 +1,8 @@
 import Button from "@/components/KeyboardButton";
 
 export default function LegacyObjectives() {
+    const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"];    
+
     return(
         <div className="text-emerald-100 flex flex-col justify-center p-2 font-mono">
             <div
@@ -33,8 +35,8 @@ export default function LegacyObjectives() {
             </div>
 
             {/* Main Timer Display */}
-            <div className="relative text-center mb-2 w-full">
-                <div className="border-2 border-emerald-600 bg-black/80 p-8 relative">
+            <div className="relative text-center w-full">
+                <div className="border-2 border-emerald-600 bg-black p-8 relative">
                     
                     {/* LED Indicators */}
                     <div className="flex justify-center gap-2 mb-4">
@@ -47,9 +49,6 @@ export default function LegacyObjectives() {
                     <div className="text-6xl font-bold text-emerald-300 mb-2 tracking-wider">
                         00:00
                     </div>
-                    <div className="text-sm text-emerald-500 uppercase tracking-widest">
-                        [FOCUS SESSION]
-                    </div>
                     
                     {/* Progress Bar */}
                     <div className="mt-4 bg-gray-800 h-2 border border-emerald-400">
@@ -59,15 +58,24 @@ export default function LegacyObjectives() {
             </div>
 
             {/* Buttons & Controllers */}
-            <div className="border-2 border-emerald-600 bg-black/80 p-2">
-                <input type="text" placeholder="Mission Name:" className="w-full"/>
-                <div className="flex flex-row w-full">
-                    {/* Controller Buttons */}
-                    <div className="flex flex-row gap-2 mt-2">
-                        <Button>START</Button>
-                        <Button className="border-b-yellow-900 border-yellow-800 border-t-yellow-600 shadow-yellow-800 text-yellow-200 from-yellow-900/80 to-yellow-400/30">PAUSE</Button>
-                        <Button className="border-b-red-900 border-red-800 border-t-red-600 shadow-red-800 text-red-200 from-red-900/80 to-red-400/30">STOP</Button>
-                    </div>
+            <div className="border border-emerald-950 bg-black/80 p-2">
+                <input type="text" placeholder="Mission Name:" className="w-full text-center"/>
+                {/* Controller Buttons */}
+                <div className="flex flex-row gap-2 mt-4 justify-between">
+                    <Button className="w-full border-b-sky-900 border-sky-800 border-t-sky-600 shadow-sky-800 text-sky-200 from-sky-900/80 to-sky-400/30">START</Button>
+                    <Button className="w-full border-b-yellow-900 border-yellow-800 border-t-yellow-600 shadow-yellow-800 text-yellow-200 from-yellow-900/80 to-yellow-400/30">PAUSE</Button>
+                    <Button className="w-full border-b-red-900 border-red-800 border-t-red-600 shadow-red-800 text-red-200 from-red-900/80 to-red-400/30">FINISH</Button>
+                </div>
+                {/* Attribute Buttons */}
+                <div className="my-4 w-full flex flex-row justify-evenly">
+                    {attributes.map(att => (
+                        <button 
+                            key={att}
+                            className={`px-2 py-1 transition-all duration-200 font-mono tracking-wider text-base "bg-gradient-to-r text-emerald-50 opacity-60 hover:border-emerald-600/50 hover:bg-emerald-900/30`}
+                        >
+                            {att}
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>
