@@ -6,10 +6,11 @@ import { RiMenuAddFill } from "react-icons/ri";
 
 export default function LegacyObjectives() {
     const attributes: string[] = ["STR", "DEX", "CON", "WIZ", "INT", "CHA"]; 
-    const [ isExpanded, setIsExpanded ] = useState(true);  
+    const [ isExpanded, setIsExpanded ] = useState(true);
+    const [ isPlaying , setIsPlaying ] = useState(false);
 
     return(
-        <div className="text-emerald-100 flex flex-col justify-center p-2 font-mono">
+        <div className="text-emerald-100 flex flex-col justify-center p-2 font-mono text-base">
             <div
                 id="background"
                 className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat opacity-20"
@@ -41,11 +42,11 @@ export default function LegacyObjectives() {
             </div>
 
             {/* Main Information Div */}
-            <div className="border border-emerald-950 bg-black/60 backdrop-blur">
+            <div className="border border-emerald-950 bg-black/60 backdrop-blur flex flex-col items-center">
 
                 {/* Main Timer Display */}
                 <div className="relative text-center w-full p-2">
-                    <div className="border-2 border-emerald-600 bg-black p-8 relative rounded">
+                    <div className="border border-emerald-950 bg-black p-8 relative">
                         
                         {/* LED Indicators */}
                         <div className="flex justify-center gap-2 mb-4">
@@ -55,7 +56,7 @@ export default function LegacyObjectives() {
                             <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                         </div>
 
-                        <div className="text-6xl font-bold text-emerald-300 mb-2 tracking-wider">
+                        <div className="text-6xl font-bold text-emerald-200 mb-2 tracking-wider">
                             00:00
                         </div>
                         
@@ -67,24 +68,44 @@ export default function LegacyObjectives() {
                 </div>
 
                 {/* Buttons & Controllers */}
-                <div className=" p-2">
+                <div className="p-4 pt-2 w-full">
 
+                    {/* Mission Name & Menu Button */}
                     <div className="flex flex-row">
                         <input type="text" placeholder="Insert Mission Name:" className="w-full text-center font-semibold text-lg"/>
-                        <button className="size-6 text-2xl mr-1" onClick={() => setIsExpanded(!isExpanded)}> <RiMenuAddFill /> </button>
+                        <button className="size-6 text-xl mr-1" onClick={() => setIsExpanded(!isExpanded)}> <RiMenuAddFill /> </button>
                     </div>
                     
                     {/* Attribute Buttons & Time Settings */}
                     {isExpanded &&
-                        <div className="my-2 w-full flex flex-row justify-evenly">
-                            {attributes.map(att => (
-                                <button 
-                                    key={att}
-                                    className={`px-2 py-1 transition-all duration-200 font-mono tracking-wider text-sm "bg-gradient-to-r text-emerald-50 opacity-60 hover:border-emerald-600/50 hover:bg-emerald-900/30`}
-                                >
-                                    {att}
-                                </button>
-                            ))}
+                        <div className="flex flex-col">
+
+                            {/* Attribute Buttons */}
+                            <div className="my-2 w-full flex flex-row justify-evenly">
+                                {attributes.map(att => (
+                                    <button 
+                                        key={att}
+                                        className={`px-2 py-1 transition-all duration-200 font-mono tracking-wider text-sm "bg-gradient-to-r text-emerald-50 hover:border-emerald-600/50 hover:bg-emerald-900/30`}
+                                    >
+                                        {att}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {/* Sprint Time Configs */}
+                            <div>
+                                <div className="flex flex-row justify-between px-2 mb-2">
+                                    <p>Sprint Time: </p>
+                                    <input type="number" name="sprint_time" id="" defaultValue={15}/>
+                                </div>
+                                <div className="flex flex-row justify-between px-2">
+                                    <p>Sprint Number: </p>
+                                    <input type="number" name="sprint_time" id="" defaultValue={4} />
+                                </div>
+                            </div>
+
+                            {/* Add Custom Log */}
+                            <input type="text" name="custom_log" id="" placeholder="Add Custom Log" className="text-center"/>
                         </div>
                     }
                     
@@ -96,9 +117,30 @@ export default function LegacyObjectives() {
                         <Button className="w-full border-b-red-900 border-red-800 border-t-red-600 shadow-red-800 text-red-200 from-red-900/80 to-red-400/30">FINISH</Button>
                     </div>
                 </div>
+            </div>
 
-                {/* Text Logs */}
-                <div></div>
+            {/* Logs Section */}
+            <div className="flex flex-col items-center">
+
+                {/* Log List */}
+                <div className="relative p-4">
+                    <div className="text-xs text-emerald-300 mb-2 uppercase tracking-widest">System Log</div>
+                    <div className="text-xs space-y-1 h-24 overflow-y-auto">
+                        <div className="text-gray-400">
+                            <span className="text-emerald-500">[14:30:15]</span> SESSION_START: Focus mode activated
+                        </div>
+                        <div className="text-gray-400">
+                            <span className="text-emerald-500">[14:05:12]</span> BREAK_COMPLETE: 5min break finished
+                        </div>
+                        <div className="text-gray-400">
+                            <span className="text-emerald-500">[14:00:00]</span> SESSION_COMPLETE: 25min focus session
+                        </div>
+                        <div className="text-gray-400">
+                            <span className="text-emerald-500">[13:35:45]</span> SYSTEM_INIT: Pomodoro timer initialized
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     )
