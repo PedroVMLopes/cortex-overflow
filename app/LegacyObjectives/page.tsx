@@ -6,7 +6,6 @@ import LogList from "@/components/LegacyObjectives/LogList";
 import TimerDisplay from "@/components/LegacyObjectives/TimerDisplay";
 import TimerSettings from "@/components/LegacyObjectives/TimerSettings";
 import { useState } from "react";
-import { RiMenuAddFill } from "react-icons/ri";
 
 export default function LegacyObjectives() {
     const [ isPlaying , setIsPlaying ] = useState(false);
@@ -45,7 +44,7 @@ export default function LegacyObjectives() {
 
             {/* Logs Section */}
             <LogList />
-            
+
         </div>
     )
 }
