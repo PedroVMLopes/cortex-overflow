@@ -31,26 +31,8 @@ export default function TimerSettings() {
                         ))}
                     </div>
 
-                    {/* Sprint Time Configs */}
-                    <div>
-                        <div className="flex flex-row justify-between px-2 mb-2">
-                            <p>Sprint Time: </p>
-                            <input type="number" name="sprint_time" id="" defaultValue={15}/>
-                        </div>
-                        <div className="flex flex-row justify-between px-2">
-                            <p>Sprint Number: </p>
-                            <input type="number" name="sprint_time" id="" defaultValue={4} />
-                        </div>
-                    </div>
-
-                    {/* Add Custom Log */}
-                    <div className="flex flex-row items-center justify-around mt-4">
-                        <input type="text" name="custom_log" id="" placeholder="Add a Custom Log" className="w-full pl-2 py-1 mr-1"/>
-                        <button type="button" className="text-emerald-100 bg-emerald-950 p-0.5 px-1.5">Add</button>
-                    </div>
                 </div>
             }
-
         </div>
     )
 }
