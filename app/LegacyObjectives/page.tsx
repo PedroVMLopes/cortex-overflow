@@ -43,8 +43,8 @@ export default function LegacyObjectives() {
             <div className="border border-emerald-950 bg-black/60 backdrop-blur flex flex-col items-center mt-2">
                 {/* Add Custom Log */}
                 <div className="flex flex-row items-center justify-around w-full p-0 border-b border-emerald-950">
-                    <input type="text" name="custom_log" id="" placeholder="Add a Custom Log" className="w-full pl-2 mr-1"/>
-                    <button type="button" className="text-emerald-100 bg-emerald-900 p-0.5 px-1.5 h-full">Add</button>
+                    <input type="text" name="custom_log" id="" placeholder="Add a Custom Log" className="w-full pl-4 mr-1"/>
+                    <button type="button" className="text-emerald-100 bg-emerald-900 p-0.5 px-1.5">Add</button>
                 </div>
                 <LogList />
             </div>

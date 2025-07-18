@@ -8,11 +8,11 @@ export default function TimerSettings() {
     const [ isExpanded, setIsExpanded ] = useState(true);
 
     return (
-        <div>
+        <div className="w-full px-2">
             {/* Mission Name & Menu expansion button */}
             <div className="flex flex-row items-center">
                 <input type="text" placeholder="Insert Mission Name:" className="w-full text-center font-semibold text-lg"/>
-                <button className="size-6 text-lg mr-1" onClick={() => setIsExpanded(!isExpanded)}> <RiMenuAddFill /> </button>
+                <button className="size-6 text-lg mr-1 opacity-60" onClick={() => setIsExpanded(!isExpanded)}> <RiMenuAddFill /> </button>
             </div>
             
             {/* Attribute Buttons & Time Settings */}
@@ -29,6 +29,18 @@ export default function TimerSettings() {
                                 {att}
                             </button>
                         ))}
+                    </div>
+
+                    {/* Timer Settings */}
+                    <div className="my-2 w-full flex flex-col px-4 justify-evenly gap-1">
+                        <div className="flex flex-row w-full">
+                            <p className="text-nowrap">Sprint Duration: </p>
+                            <input type="number" name="sprint_duration" id="sprint_duration" className="w-full"/>
+                        </div>
+                        <div className="flex flex-row w-full">
+                            <p className="text-nowrap">Number of Sprints: </p>
+                            <input type="number" name="sprint_duration" id="sprint_duration" className="w-full"/>
+                        </div>
                     </div>
 
                 </div>
