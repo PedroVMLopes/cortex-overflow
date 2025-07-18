@@ -39,7 +39,7 @@ export default function TimerSettings() {
                         </div>
                         <div className="flex flex-row w-full">
                             <p className="text-nowrap">Number of Sprints: </p>
-                            <input type="number" name="sprint_duration" id="sprint_duration" className="w-full"/>
+                            <input type="number" name="number_of_sprints" id="number_of_sprints" className="w-full"/>
                         </div>
                     </div>
 
